@@ -37,6 +37,7 @@ documentación.
 ### ✅ Buenas prácticas
 -   [Tips - OPCIONAL](https://www.youtube.com/watch?v=x_0DE_l6pgk)
 ### 📚 Documentación
+-   [React - Primeros Pasos -- Leer despues de los Videos](https://es.react.dev/learn)
 -   [Inicializar Proyecto React](https://carlosazaustre.es/blog/react-vite)
 -   [Buenas Practicas Basicas](https://dev.to/dennysjmarquez/react-la-guia-maxima-de-buenas-practicas-jamas-concebida-principios-solid-el-acronimo-stupid-clean-code-y-code-smell-53l7)
 
