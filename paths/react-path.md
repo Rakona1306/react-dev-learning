@@ -48,8 +48,7 @@ con tu nombre.
 
 ### 💪 Ejercicios
 
-**Fácil --- Tu primer saludo en pantalla** Meta: crear tu proyecto y
-lograr que aparezca un mensaje con tu nombre. Pistas para resolverlo:
+### 🟢 **Fácil --- Tu primer saludo en pantalla** Meta: crear tu proyecto y lograr que aparezca un mensaje con tu nombre. Pistas para resolverlo:
 
 1.  Revisa que tengas instalado el programa que te permite correr
     JavaScript fuera del navegador.
@@ -78,9 +77,7 @@ function App() {
 -   Reto extra: haz que el saludo cambie según la hora del día (ej.
     "Buenos días" o "Buenas noches").
 
-**Medio --- Lista de productos** Meta: crear una lista de al menos 5
-productos (nombre y precio) y obtener, por un lado, solo los nombres, y
-por otro, los precios con un descuento aplicado. Pistas para resolverlo:
+### 🟠 **Medio --- Lista de productos** Meta: crear una lista de al menos 5 productos (nombre y precio) y obtener, por un lado, solo los nombres, y por otro, los precios con un descuento aplicado. Pistas para resolverlo:
 
 1.  Piensa cómo guardarías 5 productos, cada uno con dos datos: nombre y
     precio.
@@ -107,9 +104,7 @@ precio * ?
 -   Reto extra: guarda esa lógica en un archivo aparte y tráela a tu
     archivo principal.
 
-**Difícil --- Pedir información a internet** Meta: pedir datos a una
-página de prueba gratuita y mostrarlos ordenados, controlando qué pasa
-si algo falla. Pistas para resolverlo:
+### 🔴 **Difícil --- Pedir información a internet** Meta: pedir datos a una página de prueba gratuita y mostrarlos ordenados, controlando qué pasa si algo falla. Pistas para resolverlo:
 
 1.  Busca cómo se pide información a una dirección de internet desde
     JavaScript.
@@ -164,6 +159,38 @@ datos.?
 -   Cómo mostrar varias veces algo similar (por ejemplo, una lista de
     tarjetas) a partir de una lista de datos.
 
+### 🔗 Cursos
+
+-   [Componentes en React](https://youtu.be/ladwC6Lrs-M?si=-9F5nnlmDDPmagOj&t=2197)
+-   [Variables en React](https://youtu.be/ladwC6Lrs-M?si=LUJN51-4gxhdcK3I&t=2681)
+-   [Fragment en React](https://youtu.be/ladwC6Lrs-M?si=vRgHRmdz42IoZ0Nw&t=3128)
+-   [Estilos en React](https://youtu.be/ladwC6Lrs-M?si=CqGTl7GDm4LjLzyC&t=3431)
+-   [Props en React](https://youtu.be/ladwC6Lrs-M?si=m6XUa2jnV2dlB7Gj&t=3698)
+-   [Condicionales en React](https://youtu.be/ladwC6Lrs-M?si=FO3qf14rGkQIG7fl&t=5584)
+-   [Listas en React](https://youtu.be/ladwC6Lrs-M?si=H5O4Nt9A0-jgCpsj&t=6044)
+-   [ClassNames en React](https://youtu.be/ladwC6Lrs-M?si=5RpA7Gfgcx-VARD9&t=6813)
+
+### ✅ Buenas prácticas
+
+-   [📚 Optimizar rendimiento con React](https://www.toptal.com/developers/react/componentes-react-eficientes-una-guia-para-optimizar-el-desempeno-de-react)
+-   [🎥 Tips - OPCIONAL (5:16)](https://www.youtube.com/watch?v=x_0DE_l6pgk)
+-   [📚 Optimizar Juego para React](https://kinsta.com/es/blog/practicas-de-react/)
+-   [📚 24 Javascript Tips](https://code.tutsplus.com/es/24-javascript-best-practices-for-beginners--net-5399t)
+-   [📚 Dar estilos en React](https://www.freecodecamp.org/espanol/news/como-dar-estilo-a-tus-aplicaciones-react-con-css-como-un-profesional/)
+
+### 📚 Documentación
+
+-   [Javascript en React con llaves](https://es.react.dev/learn/javascript-in-jsx-with-curly-braces)
+-   [React Marcado JSX](https://es.react.dev/learn#writing-markup-with-jsx)
+-   [Agregar Estilos](https://es.react.dev/learn#adding-styles)
+-   [Mostrar Datos](https://es.react.dev/learn#displaying-data)
+-   [Renderizado Condicional](https://es.react.dev/learn#conditional-rendering)
+-   [Renderizar Listas](https://es.react.dev/learn#rendering-lists)
+-   [Crear un componente](https://es.react.dev/learn/your-first-component)
+-   [Importar y Exportar Componentes](https://es.react.dev/learn/importing-and-exporting-components)
+-   [Patrones de Disenio](https://refactoring.guru/es/design-patterns)
+-   [Atomic Design UI](https://uifrommars.com/atomic-design-ventajas/)
+
 ### 📦 Qué debes entregar hoy
 
 Una página con al menos 2 componentes propios, donde uno de ellos recibe
@@ -171,9 +198,7 @@ información desde afuera y la muestra en pantalla.
 
 ### 💪 Ejercicios
 
-**Fácil --- Tarjeta de saludo** Meta: crear un componente que reciba un
-nombre desde afuera y lo muestre en un título grande. Pistas para
-resolverlo:
+### 🟢 **Fácil --- Tarjeta de saludo** Meta: crear un componente que reciba un nombre desde afuera y lo muestre en un título grande. Pistas para resolverlo:
 
 1.  Crea un nuevo componente y dale un nombre descriptivo.
 2.  Piensa cómo ese componente puede "recibir" un dato desde quien lo
@@ -183,9 +208,115 @@ resolverlo:
 -   Reto extra: agrega un segundo dato opcional (como un apellido) que
     solo se muestre si fue enviado.
 
-**Medio --- Lista de tareas pendientes** Meta: mostrar una lista de
-tareas (que ya tienes armada) usando un componente, una por una. Pistas
-para resolverlo:
+---
+
+#### 📁 Ubicación según Atomic Design
+
+* **Átomo (`src/components/atoms/greeting-card/greeting-card.jsx`):** Componente básico indivisible que valida y muestra el saludo.
+
+```text
+src/
+└── components/
+    └── atoms/
+        └── greeting-card/
+            └── greeting-card.jsx       # Átomo (Tarjeta de saludo)
+
+```
+
+---
+
+#### 🌟 Buenas Prácticas de React Aplicadas
+
+1. **Validación de tipos de datos con `prop-types`:** Al utilizar JavaScript (JS plano en lugar de TypeScript), la librería `prop-types` nos permite documentar y validar el tipo de datos que recibe el componente en tiempo de ejecución.
+2. **Desestructuración de Props:** Extraer las propiedades directamente en los parámetros de la función mejora la claridad.
+3. **Puntualizar obligatoriedad (`isRequired`):** Indicar cuáles props son indispensables para que el componente funcione correctamente.
+4. **Renderizado Condicional Limpio:** Evaluar las props opcionales usando operadores lógicos (`&&`) para no ensuciar la interfaz.
+
+---
+
+#### 💻 Instalación de la Librería
+
+Ejecuta en tu terminal el siguiente comando según el gestor de paquetes que estés usando:
+
+```bash
+# Si usas npm
+npm install prop-types
+
+# Si usas yarn
+yarn add prop-types
+
+# Si usas pnpm
+pnpm add prop-types
+
+```
+
+---
+
+#### 💡 Pistas para el Ejercicio: Tarjeta de Saludo
+
+##### 1. Importar `PropTypes` y definir el componente
+
+Ubicación: `src/components/atoms/greeting-card/greeting-card.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+
+export function GreetingCard({ nombre, apellido }) {
+  return (
+    <h1>
+      Hola, {nombre}
+      {/* Reto Extra: Renderizado condicional */}
+      {apellido && ` ${apellido}`}
+    </h1>
+  );
+}
+
+```
+
+---
+
+##### 2. Configurar el esquema de `propTypes`
+
+Ubicación: `src/components/atoms/greeting-card/greeting-card.jsx`
+
+Define las validaciones debajo del componente declarando qué tipo de dato debe ser cada prop y si es requerida.
+
+```jsx
+// Definición de reglas de validación
+GreetingCard.propTypes = {
+  // 'nombre' debe ser un string y es obligatorio
+  nombre: PropTypes.string.isRequired,
+  
+  // 'apellido' debe ser un string pero es opcional
+  apellido: PropTypes.string,
+};
+
+```
+
+---
+
+##### 3. Usar el componente desde fuera
+
+Ubicación: `src/App.jsx`
+
+```jsx
+import { GreetingCard } from './components/atoms/greeting-card/greeting-card';
+
+export function App() {
+  return (
+    <main>
+      {/* Caso válido con obligatorio y opcional */}
+      <GreetingCard nombre="Carlos" apellido="Gómez" />
+
+      {/* Si pasas un tipo de dato incorrecto (ej: nombre={123}), 
+          React mostrará una advertencia en la consola del navegador */}
+    </main>
+  );
+}
+
+```
+
+### 🟠 **Medio --- Lista de tareas pendientes** Meta: mostrar una lista de tareas (que ya tienes armada) usando un componente, una por una. Pistas para resolverlo:
 
 1.  Piensa cómo recorrer una lista de datos para mostrar algo por cada
     elemento.
@@ -197,10 +328,143 @@ para resolverlo:
 -   Reto extra: dale un estilo distinto a las tareas si su nombre es muy
     largo (por ejemplo, más de 20 letras).
 
-**Difícil --- Tarjeta de producto** Meta: crear un componente de
-"tarjeta de producto" que reciba imagen, nombre, precio y un posible
-descuento, y muestre una etiqueta especial solo si hay descuento. Pistas
-para resolverlo:
+---
+
+#### 📁 Ubicación según Atomic Design
+
+* **Átomo (`src/components/atoms/task-item/task-item.jsx`):** Representa un elemento individual e indivisible de la lista (una sola tarea).
+* **Molécula (`src/components/molecules/todo-list/todo-list.jsx`):** Recibe el arreglo de objetos, maneja la validación de lista vacía e itera para renderizar los átomos.
+
+```text
+src/
+└── components/
+    ├── atoms/
+    │   └── task-item/
+    │       └── task-item.jsx       # Átomo (Tarea individual)
+    └── molecules/
+        └── todo-list/
+            └── todo-list.jsx       # Molécula (Iterador de tareas)
+
+```
+
+---
+
+#### 🌟 Buenas Prácticas de React Aplicadas
+
+1. **Validación de Arreglos y Objetos Complejos:** Uso de `PropTypes.arrayOf` y `PropTypes.shape` para validar la estructura interna de los objetos en las props.
+2. **Identificador Único Persistente:** Uso de una propiedad `id` única para el atributo `key`, evitando índices numéricos (`index`) que afecten el rendimiento o el estado.
+3. **Manejo de Caso Borde (Early Return):** Renderizar un mensaje alternativo al inicio de la función si la lista no contiene elementos.
+4. **Separación de Responsabilidades:** Delegar la lógica visual del reto extra (longitud del texto) directamente al átomo `TaskItem`.
+
+---
+
+#### 💻 Instalación de la Librería
+
+Si aún no la has instalado en tu proyecto, ejecuta:
+
+```bash
+# Si usas npm
+npm install prop-types
+
+# Si usas yarn
+yarn add prop-types
+
+# Si usas pnpm
+pnpm add prop-types
+
+```
+
+---
+
+#### 💡 Pistas para el Ejercicio: Lista de Tareas
+
+##### 1. Átomo `TaskItem` y validación de props
+
+Ubicación: `src/components/atoms/task-item/task-item.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+
+export function TaskItem({ texto }) {
+  // Reto extra: Evaluar longitud del texto
+  const esLarga = texto.length > 20;
+
+  return (
+    <li className={esLarga ? 'tarea-larga' : 'tarea-normal'}>
+      {texto}
+    </li>
+  );
+}
+
+TaskItem.propTypes = {
+  texto: PropTypes.string.isRequired,
+};
+
+```
+
+---
+
+##### 2. Molécula `TodoList` con Early Return para lista vacía
+
+Ubicación: `src/components/molecules/todo-list/todo-list.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+import { TaskItem } from '../../atoms/task-item/task-item';
+
+export function TodoList({ tareas }) {
+  // Pista: Validar si la lista está vacía antes de iterar
+  if (!tareas || tareas.length === 0) {
+    return <p>No hay tareas pendientes por hacer.</p>;
+  }
+
+  return (
+    <ul>
+      {/* Aquí irá la iteración con .map() */}
+    </ul>
+  );
+}
+
+```
+
+---
+
+##### 3. Iteración con `.map()`, `key` y validación con `PropTypes.arrayOf`
+
+Ubicación: `src/components/molecules/todo-list/todo-list.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+import { TaskItem } from '../../atoms/task-item/task-item';
+
+export function TodoList({ tareas }) {
+  if (!tareas || tareas.length === 0) {
+    return <p>No hay tareas pendientes por hacer.</p>;
+  }
+
+  return (
+    <ul>
+      {tareas.map((tarea) => (
+        // Pasa el id único a la prop 'key' del elemento generado
+        <TaskItem key={tarea.id} texto={tarea.texto} />
+      ))}
+    </ul>
+  );
+}
+
+// Validar un arreglo de objetos con forma específica
+TodoList.propTypes = {
+  tareas: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      texto: PropTypes.string.isRequired,
+    })
+  ),
+};
+
+```
+
+### 🔴 **Difícil --- Tarjeta de producto** Meta: crear un componente de "tarjeta de producto" que reciba imagen, nombre, precio y un posible descuento, y muestre una etiqueta especial solo si hay descuento. Pistas para resolverlo:
 
 1.  Define qué datos necesita recibir tu tarjeta para funcionar.
 2.  Piensa cómo mostrar una etiqueta ("Oferta") solo cuando exista un
@@ -211,28 +475,201 @@ para resolverlo:
 -   Reto extra: ordena los productos mostrados de menor a mayor precio
     antes de mostrarlos.
 
-> En los siguientes ejercicios agrega pistas similares como:
->
-> ``` jsx
-> useState(...)
-> useEffect(()=>{},[])
-> lista.map(...)
-> useContext(...)
-> <Routes />
-> lazy(...)
-> ```
+---
 
-### 🔗 Cursos
+#### 📁 Ubicación según Atomic Design
 
--   \[ \]
+* **Átomo (`src/components/atoms/badge/badge.jsx`):** Elemento simple para mostrar etiquetas informativas (como la etiqueta de "Oferta").
+* **Molécula (`src/components/molecules/product-card/product-card.jsx`):** Muestra la información de un solo producto (imagen, nombre, precio y descuento).
+* **Organismo (`src/components/organisms/product-list/product-list.jsx`):** Recibe la lista de productos, aplica el ordenamiento por precio y renderiza la colección de tarjetas.
 
-### ✅ Buenas prácticas
+```text
+src/
+└── components/
+    ├── atoms/
+    │   └── badge/
+    │       └── badge.jsx          # Átomo (Etiqueta de "Oferta")
+            └── badge.css
+    ├── molecules/
+    │   └── product-card/
+    │       └── product-card.jsx    # Molécula (Tarjeta individual de producto)
+    └── organisms/
+        └── product-list/
+            └── product-list.jsx   # Organismo (Lista y ordenamiento de productos)
 
--   \[ \]
+```
 
-### 📚 Documentación
+---
 
--   \[ \]
+#### 🌟 Buenas Prácticas de React Aplicadas
+
+1. **Inmutabilidad al ordenar datos:** El método `.sort()` de JavaScript muta (modifica) el arreglo original. Siempre debes crear una copia del arreglo (usando el operador spread `[...]` o `.toSorted()`) antes de ordenarlo para evitar efectos secundarios en React.
+2. **Validación estricta de objetos embebidos:** Usar `PropTypes.shape` para definir claramente los tipos de datos requeridos en cada propiedad del producto.
+3. **Composición modular:** Delegar elementos visuales secundarios (como una etiqueta) a componentes atómicos reutilizables (`badge.jsx`).
+4. **Manejo de rutas de imágenes:** Usar atributos semánticos como `alt` descriptivos en las etiquetas `<img>` para garantizar la accesibilidad web.
+
+---
+
+## 💻 Instalación de la Librería
+
+Si aún no la has instalado en tu proyecto, ejecuta:
+
+```bash
+# Si usas npm
+npm install prop-types
+
+# Si usas yarn
+yarn add prop-types
+
+# Si usas pnpm
+pnpm add prop-types
+
+```
+
+---
+
+#### 💡 Pistas para el Ejercicio: Tarjeta de Producto
+
+##### 1. Definir Estilos CSS para `Badge`
+
+Ubicación: `src/components/atoms/badge/badge.css`
+
+Asigna los valores visuales utilizando la misma nomenclatura kebab-case para las clases:
+
+```css
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.badge-oferta {
+  background-color: #ff4d4f;
+  color: #ffffff;
+}
+```
+
+##### 2. Átomo `Badge` (Etiqueta de Oferta)
+
+Ubicación: `src/components/atoms/badge/badge.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+import './badge.css';
+
+export function Badge({ texto, variante }) {
+  // Pista: Concatena dinámicamente la clase según la variante recibida
+  const claseVariante = variante ? `badge-${variante}` : 'badge-oferta';
+
+  return (
+    <span className={`badge ${claseVariante}`}>
+      {texto}
+    </span>
+  );
+}
+
+// Configuración de validación con PropTypes
+Badge.propTypes = {
+  texto: PropTypes.string.isRequired,
+  variante: PropTypes.string,
+};
+
+// Valores por defecto
+Badge.defaultProps = {
+  variante: 'oferta',
+};
+
+```
+
+---
+
+##### 3. Molécula `ProductCard` (Con renderizado condicional de descuento)
+
+Ubicación: `src/components/molecules/product-card/product-card.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+import { Badge } from '../../atoms/badge/badge';
+
+export function ProductCard({ imagen, nombre, precio, descuento }) {
+  // Pista: Evalúa si hay un descuento mayor a cero
+  const tieneDescuento = descuento > 0;
+
+  return (
+    <article className="product-card">
+      {/* Pista 2: Muestra el Badge SOLO si tieneDescuento es true */}
+      {tieneDescuento && <Badge texto={`-${descuento}% OFERTA`} />}
+      
+      <img src={imagen} alt={nombre} />
+      <h3>{nombre}</h3>
+      <p>Precio: ${precio}</p>
+    </article>
+  );
+}
+
+ProductCard.propTypes = {
+  imagen: PropTypes.string.isRequired,
+  nombre: PropTypes.string.isRequired,
+  precio: PropTypes.number.isRequired,
+  descuento: PropTypes.number, // Opcional
+};
+
+// Valor por defecto en caso de no enviar descuento
+ProductCard.defaultProps = {
+  descuento: 0,
+};
+
+```
+
+---
+
+##### 4. Organismo `ProductList` (Reto Extra: Ordenar por precio)
+
+Ubicación: `src/components/organisms/product-list/product-list.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+import { ProductCard } from '../../molecules/product-card/product-card';
+
+export function ProductList({ productos }) {
+  if (!productos || productos.length === 0) {
+    return <p>No hay productos disponibles.</p>;
+  }
+
+  // Reto extra: Copiar el arreglo para no mutar el original y ordenar de menor a mayor precio
+  const productosOrdenados = [...productos].sort((a, b) => a.precio - b.precio);
+
+  return (
+    <section className="product-list">
+      {productosOrdenados.map((producto) => (
+        <ProductCard
+          key={producto.id}
+          imagen={producto.imagen}
+          nombre={producto.nombre}
+          precio={producto.precio}
+          descuento={producto.descuento}
+        />
+      ))}
+    </section>
+  );
+}
+
+ProductList.propTypes = {
+  productos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      imagen: PropTypes.string.isRequired,
+      nombre: PropTypes.string.isRequired,
+      precio: PropTypes.number.isRequired,
+      descuento: PropTypes.number,
+    })
+  ).isRequired,
+};
+
+```
 
 ------------------------------------------------------------------------
 
