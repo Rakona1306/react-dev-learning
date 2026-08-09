@@ -1,7 +1,3 @@
-Sí. Lo que quieres es que **todo el contenido esté escrito directamente como un documento Markdown**, no como una explicación normal en el chat.
-
-Te dejo la estructura correcta para que puedas copiarla directamente a un archivo `.md`:
-
 # 📘 Guía completa de comandos Git
 
 > Guía práctica para aprender Git desde los comandos básicos hasta los comandos avanzados.
