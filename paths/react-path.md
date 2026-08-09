@@ -161,14 +161,14 @@ datos.?
 
 ### 🔗 Cursos
 
--   [Componentes en React](https://youtu.be/ladwC6Lrs-M?si=-9F5nnlmDDPmagOj&t=2197)
--   [Variables en React](https://youtu.be/ladwC6Lrs-M?si=LUJN51-4gxhdcK3I&t=2681)
--   [Fragment en React](https://youtu.be/ladwC6Lrs-M?si=vRgHRmdz42IoZ0Nw&t=3128)
--   [Estilos en React](https://youtu.be/ladwC6Lrs-M?si=CqGTl7GDm4LjLzyC&t=3431)
--   [Props en React](https://youtu.be/ladwC6Lrs-M?si=m6XUa2jnV2dlB7Gj&t=3698)
--   [Condicionales en React](https://youtu.be/ladwC6Lrs-M?si=FO3qf14rGkQIG7fl&t=5584)
--   [Listas en React](https://youtu.be/ladwC6Lrs-M?si=H5O4Nt9A0-jgCpsj&t=6044)
--   [ClassNames en React](https://youtu.be/ladwC6Lrs-M?si=5RpA7Gfgcx-VARD9&t=6813)
+-   [🎥 Componentes en React](https://youtu.be/ladwC6Lrs-M?si=-9F5nnlmDDPmagOj&t=2197)
+-   [🎥 Variables en React](https://youtu.be/ladwC6Lrs-M?si=LUJN51-4gxhdcK3I&t=2681)
+-   [🎥 Fragment en React](https://youtu.be/ladwC6Lrs-M?si=vRgHRmdz42IoZ0Nw&t=3128)
+-   [🎥 Estilos en React](https://youtu.be/ladwC6Lrs-M?si=CqGTl7GDm4LjLzyC&t=3431)
+-   [🎥 Props en React](https://youtu.be/ladwC6Lrs-M?si=m6XUa2jnV2dlB7Gj&t=3698)
+-   [🎥 Condicionales en React](https://youtu.be/ladwC6Lrs-M?si=FO3qf14rGkQIG7fl&t=5584)
+-   [🎥 Listas en React](https://youtu.be/ladwC6Lrs-M?si=H5O4Nt9A0-jgCpsj&t=6044)
+-   [🎥 ClassNames en React](https://youtu.be/ladwC6Lrs-M?si=5RpA7Gfgcx-VARD9&t=6813)
 
 ### ✅ Buenas prácticas
 
@@ -673,91 +673,1052 @@ ProductList.propTypes = {
 
 ------------------------------------------------------------------------
 
-## Día 3 --- Hacer que tu página reaccione (estado y eventos)
+## Día 3 — 🧠 Estado, eventos y Hooks fundamentales de React
+
+**`useState` · `useRef` · `useId` · Eventos**
+
+---
 
 ### 🎯 Qué aprender
 
--   Cómo hacer que un componente "recuerde" información que puede
-    cambiar (por ejemplo, un número que sube o baja).
--   Cómo responder cuando el usuario hace clic, escribe o envía un
-    formulario.
--   Cómo capturar lo que el usuario escribe en un campo de texto.
--   Por qué, cuando algo cambia, hay que "reemplazar" la información en
-    vez de modificarla directamente.
--   Cómo compartir esa información entre dos componentes distintos
-    cuando uno la necesita también.
+* Cómo utilizar **`useState`** para guardar información que puede cambiar y hacer que el componente se actualice automáticamente.
+* Cómo manejar **eventos de usuario** como clics, cambios en inputs, envíos de formularios y otras interacciones.
+* Cómo controlar y obtener el valor de los **inputs** utilizando el estado de React.
+* Cuándo utilizar **`useState`** y cuándo utilizar **`useRef`** para guardar información dentro de un componente.
+* Cómo utilizar **`useRef`** para acceder a elementos del DOM y conservar valores sin provocar una nueva renderización.
+* Cómo utilizar **`useId`** para generar identificadores únicos y relacionar correctamente elementos de formularios.
+* Cómo actualizar correctamente objetos y arrays dentro del estado **sin modificar directamente el estado anterior**.
+* Cómo compartir información entre componentes utilizando **props** y levantar el estado al componente padre cuando sea necesario.
+* Cómo identificar qué componente debe ser responsable de cada estado para mantener una aplicación organizada.
+* Cómo combinar **estado + eventos + componentes** para construir interfaces interactivas.
 
-### 📦 Qué debes entregar hoy
+---
 
-Una pequeña pantalla interactiva (por ejemplo, un contador o un
-formulario) que cambie en pantalla cuando el usuario hace algo.
+### 🎯 Objetivo final del Día 3
 
-### 💪 Ejercicios
+Al terminar los tres ejercicios deberías poder responder:
 
-**Fácil --- Contador** Meta: mostrar un número en pantalla con dos
-botones, uno que lo suba y otro que lo baje. Pistas para resolverlo:
+* ¿Cuándo utilizo `useState`?
+* ¿Cuándo utilizo `useRef`?
+* ¿Para qué sirve `useId`?
+* ¿Cómo manejo `onClick`, `onChange` y `onSubmit`?
+* ¿Cómo manejo formularios en React?
+* ¿Cómo actualizo correctamente un array u objeto dentro del estado?
+* ¿Cómo paso información mediante props?
+* ¿Cómo hago que un componente hijo ejecute una acción que pertenece al componente padre?
+* ¿Cómo comparto estado entre varios componentes?
 
-1.  Investiga cómo hacer que un componente "recuerde" un valor que puede
-    cambiar.
-2.  Cada botón necesita una acción que ocurra al hacer clic.
-3.  Piensa cómo actualizas ese valor guardado cuando se hace clic.
 
--   Reto extra: agrega un botón "reiniciar" que vuelva el número a 0.
-
-**Medio --- Campo de texto** Meta: mostrar en pantalla, en tiempo real,
-lo que el usuario va escribiendo en un campo de texto, y un botón para
-borrarlo. Pistas para resolverlo:
-
-1.  Piensa cómo "escuchar" cada letra que el usuario escribe en el
-    campo.
-2.  Guarda ese texto en algo que el componente recuerde y que se
-    actualice constantemente.
-3.  Muestra ese valor guardado en algún lugar de la pantalla.
-
--   Reto extra: no dejes que el usuario envíe el formulario si el campo
-    está vacío.
-
-**Difícil --- Lista de tareas con acciones** Meta: crear una lista de
-tareas donde el usuario pueda agregar, eliminar y marcar tareas como
-completadas. Pistas para resolverlo:
-
-1.  Piensa cómo representar cada tarea (por ejemplo: un texto y si está
-    completada o no).
-2.  Para agregar una tarea nueva, necesitas juntar la anterior lista con
-    la tarea nueva, sin borrar las anteriores.
-3.  Para eliminar, piensa cómo quedarte con "todas menos una".
-4.  Para marcar como completada, piensa cómo cambiar solo esa tarea sin
-    tocar las demás.
-
--   Reto extra: separa el formulario de "agregar tarea" y la lista en
-    dos componentes distintos, compartiendo la información entre ambos.
-
-> En los siguientes ejercicios agrega pistas similares como:
->
-> ``` jsx
-> useState(...)
-> useEffect(()=>{},[])
-> lista.map(...)
-> useContext(...)
-> <Routes />
-> lazy(...)
-> ```
+---
 
 ### 🔗 Cursos
 
--   \[ \]
+-   [🎥 Eventos para React](https://youtu.be/ladwC6Lrs-M?si=yxfQzN2o5Jg6jpVn&t=4220)
+-   [🎥 Nuevo Hook!! :D - useState](https://youtu.be/ladwC6Lrs-M?si=WU-iZMKrtKuHA0ar&t=5140)
+-   [🎥 Formularios Interactivos y Dinamicos en React](https://youtu.be/ladwC6Lrs-M?si=OgbOwJ04uPLBrKjn&t=6921)
+-   [🎥 Comunicacion entre Componentes](https://youtu.be/ladwC6Lrs-M?si=1AyEhSfFnDhmJDaO&t=7655)
+-   [🎥 Comunicacion entre Componentes desde Hijo al Padre](https://youtu.be/ladwC6Lrs-M?si=4DA_7V8K6UGJkNen&t=8020)
+-   [🎥 Nuevo Hook!! :D - useRef](https://youtu.be/ladwC6Lrs-M?si=yvmMagXkq46vXvz5&t=13954)
+-   [🎥 Nuevo Hook!! :D - useId](https://youtu.be/58TU9rOHkec?si=J_QU4c0dtlL6FtaP)
 
 ### ✅ Buenas prácticas
 
--   \[ \]
+-   [📚 Explicacion y Buenas Practicas con useState](https://medium.com/@sysglobalsolutionsblog/estados-en-react-js-hook-usestate-a8ceb548b4a1)
+-   [📚 Explicacion y Buenas Practicas con useRef](https://lenguajejs.com/react/datos/useref/)
+-   [📚 Pro tips con useId - Ingles Doc](https://dev.to/a1guy/the-definitive-react-19-useid-guide-patterns-pitfalls-and-pro-tips-40ia)
 
 ### 📚 Documentación
 
--   \[ \]
+-   [Eventos en React vs Javascript](https://gist.github.com/codewithleader/c1fa3aa3e06bbefe28a0f86fac44247f)
+-   [Evento de Click en React](https://es.react.dev/learn/responding-to-events)
+-   [Informacion y uso de useState](https://es.react.dev/reference/react/useState)
+-   [Aprender useState - Logica de ESTADO](https://es.react.dev/learn/state-a-components-memory)
+-   [Logica de Estado con Ejemplos](https://es.react.dev/learn/state-as-a-snapshot)
+-   [Actualizar Objetos con useState](https://es.react.dev/learn/updating-objects-in-state)
+-   [Actualizar Listas o Arrays con useState](https://es.react.dev/learn/updating-arrays-in-state)
+-   [Informacion y uso de useRef](https://es.react.dev/reference/react/useRef)
+-   [Informacion y uso de useId](https://es.react.dev/reference/react/useId)
+-   [Crear un componente](https://es.react.dev/learn/your-first-component)
+-   [Importar y Exportar Componentes](https://es.react.dev/learn/importing-and-exporting-components)
+-   [Patrones de Disenio](https://refactoring.guru/es/design-patterns)
+-   [Atomic Design UI](https://uifrommars.com/atomic-design-ventajas/)
+
+---
+
+### 📦 Qué debes entregar hoy
+
+Construye una pequeña aplicación interactiva utilizando los **Hooks fundamentales de React** y los **eventos**.
+
+Durante los ejercicios debes practicar:
+
+* `useState`
+* `useRef`
+* `useId`
+* Eventos (`onClick`, `onChange`, `onSubmit`)
+* Formularios
+* Actualización inmutable de objetos y arrays
+* Props y comunicación entre componentes
+* Levantar el estado al componente padre
+
+---
+
+### 💪 Ejercicios
+
+## 🟢 Fácil — Contador interactivo
+
+**Meta:** crear un contador que permita aumentar, disminuir y reiniciar un número utilizando eventos y estado.
+
+La pantalla debe mostrar:
+
+* El valor actual del contador.
+* Un botón para aumentar.
+* Un botón para disminuir.
+* Un botón para reiniciar.
+
+**Hooks y conceptos que debes utilizar:**
+
+* `useState`
+* Evento `onClick`
+* Actualización del estado
+
+**Pistas para resolverlo:**
+
+1. Necesitas guardar el número actual en un estado.
+2. Cada botón debe ejecutar una función cuando ocurra un `click`.
+3. La función de aumentar debe actualizar el estado sumando `1`.
+4. La función de disminuir debe actualizar el estado restando `1`.
+5. El botón de reiniciar debe devolver el estado a `0`.
+6. Recuerda que no debes modificar directamente el valor anterior del estado.
+
+**🔥 Reto extra — `useRef`:**
+
+Agrega un botón **"Mostrar cantidad de clics"**.
+
+Utiliza `useRef` para llevar un contador de cuántas veces se han presionado los botones **sin utilizar otro `useState` para ese contador**.
+
+---
+## 📁 Ubicación según Atomic Design
+
+Para este ejercicio, dividiremos la estructura manteniendo la responsabilidad de cada nivel:
+
+* **Átomo (`src/components/atoms/button/button.jsx`):** Elemento básico e indivisible para la interacción de clics, con su archivo de estilos `button.css`.
+* **Molécula (`src/components/molecules/counter-controls/counter-controls.jsx`):** Grupo de botones con sus respectivas acciones, con su archivo de estilos `counter-controls.css`.
+* **Organismo (`src/components/organisms/counter/counter.jsx`):** Contiene la lógica del estado (`useState`), la referencia (`useRef`), la pantalla del valor y la integración de las moléculas, con su archivo de estilos `counter.css`.
+
+```text
+src/
+└── components/
+    ├── atoms/
+    │   └── button/
+    │       ├── button.css           # Estilos del botón (kebab-case)
+    │       └── button.jsx           # Átomo (Botón genérico)
+    ├── molecules/
+    │   └── counter-controls/
+    │       ├── counter-controls.css # Estilos del contenedor de botones
+    │       └── counter-controls.jsx # Molécula (Grupo de botones)
+    └── organisms/
+        └── counter/
+            ├── counter.css          # Estilos de la tarjeta principal
+            └── counter.jsx          # Organismo (Maneja el estado y useRef)
+
+```
+
+---
+
+## 🌟 Buenas Prácticas de React Aplicadas
+
+1. **Estado Inmutable:** Nunca hagas `contador = contador + 1`. Usa la función modificadora que provee `useState`.
+2. **Funciones de actualización con valor previo (`prev`):** Cuando el nuevo estado depende directamente del valor anterior, pasa una función callback a la función actualizadora `setContador(prev => prev + 1)`.
+3. **Uso correcto de `useRef`:** Las referencias creadas con `useRef` persisten entre renderizados y **no provocan** un nuevo renderizado cuando su propiedad `.current` cambia. Esto lo hace ideal para métricas internas o contadores de eventos que no necesitan redibujar la pantalla inmediatamente.
+4. **Validación de eventos:** Validar con `PropTypes.func` que las callbacks recibidas en las props sean funciones válidas.
+
+---
+
+## 💻 Instalación de la Librería
+
+Si aún no la has instalado en tu proyecto, ejecuta:
+
+```bash
+# Si usas npm
+npm install prop-types
+
+# Si usas yarn
+yarn add prop-types
+
+# Si usas pnpm
+pnpm add prop-types
+
+```
+
+---
+
+## 💡 Pistas para el Ejercicio: Contador Interactivo
+
+### 1. Estilos CSS del Átomo (`button.css`)
+
+Ubicación: `src/components/atoms/button/button.css`
+
+Define las clases en formato **kebab-case** para estilizar el botón básico:
+
+```css
+.button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.button-danger {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+```
+
+---
+
+### 2. Átomo `Button` con PropTypes (`button.jsx`)
+
+Ubicación: `src/components/atoms/button/button.jsx`
+
+Piensa cómo hacer que un botón Html acepte el evento `onClick` y muestre un texto recibido por props.
+
+```jsx
+import PropTypes from 'prop-types';
+import './button.css';
+
+export function Button({ texto, onClick, variante }) {
+  // Pista: Aplica la clase dinámica concatenando 'button-' con la variante
+  const claseBoton = `button button-${variante}`;
+
+  return (
+    <button className={claseBoton} onClick={/* ¿Qué función debe ejecutarse al hacer clic? */}>
+      {/* ¿Qué prop muestra el texto del botón? */}
+    </button>
+  );
+}
+
+Button.propTypes = {
+  texto: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  variante: PropTypes.string,
+};
+
+Button.defaultProps = {
+  variante: 'primary',
+};
+
+```
+
+---
+
+### 3. Molécula `CounterControls` (`counter-controls.jsx`)
+
+Ubicación: `src/components/molecules/counter-controls/counter-controls.jsx`
+
+Agrupa los tres botones pasando la acción correspondiente a cada uno desde el organismo padre.
+
+```jsx
+import PropTypes from 'prop-types';
+import { Button } from '../../atoms/button/button';
+
+export function CounterControls({ onIncrementar, onDecrementar, onReiniciar }) {
+  return (
+    <div className="counter-controls">
+      {/* Pista: Pasa la callback correspondiente al evento onClick de cada Button */}
+      <Button texto="Aumentar" onClick={onIncrementar} />
+      <Button texto="Disminuir" onClick={onDecrementar} />
+      <Button texto="Reiniciar" onClick={onReiniciar} variante="danger" />
+    </div>
+  );
+}
+
+CounterControls.propTypes = {
+  onIncrementar: PropTypes.func.isRequired,
+  onDecrementar: PropTypes.func.isRequired,
+  onReiniciar: PropTypes.func.isRequired,
+};
+
+```
+
+---
+
+### 4. Organismo `Counter` (`counter.jsx`)
+
+Ubicación: `src/components/organisms/counter/counter.jsx`
+
+Declara el estado del contador y define las funciones handler utilizando la forma funcional de actualización.
+
+```jsx
+import { useState } from 'react';
+import { CounterControls } from '../../molecules/counter-controls/counter-controls';
+
+export function Counter() {
+  // Pista 1: Inicializa el estado en 0
+  const [contador, setContador] = useState(0);
+
+  // Pista 2: Crea las funciones de manejo de eventos
+  const handleIncrementar = () => {
+    // ¿Cómo actualizas el estado usando el valor anterior (prev)?
+  };
+
+  const handleDecrementar = () => {
+    // Resta 1 al valor previo
+  };
+
+  const handleReiniciar = () => {
+    // Vuelve el valor a 0
+  };
+
+  return (
+    <section className="counter">
+      <h2>Valor actual: {contador}</h2>
+      <CounterControls
+        onIncrementar={handleIncrementar}
+        onDecrementar={handleDecrementar}
+        onReiniciar={handleReiniciar}
+      />
+    </section>
+  );
+}
+
+```
+
+---
+
+### 🚀 Reto Extra: Contador de clics sin renderizados usando `useRef`
+
+Ubicación: `src/components/organisms/counter/counter.jsx`
+
+Recuerda que modificar una referencia `.current` no provoca que el componente se vuelva a pintar en pantalla.
+
+```jsx
+import { useState, useRef } from 'react';
+
+export function Counter() {
+  const [contador, setContador] = useState(0);
+  
+  // Pista Reto Extra: useRef guarda un valor mutable en la propiedad .current
+  const totalClicsRef = useRef(0);
+
+  const registrarClic = () => {
+    // Pista: Incrementa .current directamente cada vez que se presione CUALQUIER botón
+    totalClicsRef.current += 1;
+  };
+
+  const handleMostrarClics = () => {
+    // Muestra en una alerta o consola la cantidad almacenada en totalClicsRef.current
+    alert(`Total de clics presionados: ${totalClicsRef.current}`);
+  };
+
+  // ¡Integra registrarClic() dentro de tus handlers para llevar la cuenta!
+}
+
+```
+---
+
+## 🟡 Medio — Formulario de usuario
+
+**Meta:** crear un formulario donde el usuario pueda escribir sus datos y ver la información ingresada en pantalla.
+
+El formulario debe tener:
+* Nombre.
+* Correo electrónico.
+* Edad.
+* Botón **"Guardar"**.
+* Botón **"Limpiar"**.
+
+Al enviar el formulario, muestra los datos ingresados debajo.
+
+**Hooks y conceptos que debes utilizar:**
+
+* `useState`
+* `useRef`
+* `useId`
+* `onChange`
+* `onSubmit`
+* `onClick`
+* Formularios controlados
+
+**Pistas para resolverlo:**
+
+1. Utiliza `useState` para almacenar los valores de los campos.
+2. Cada input debe actualizar su información mediante `onChange`.
+3. Utiliza `onSubmit` para controlar el envío del formulario.
+4. Evita que el navegador recargue la página cuando se envía el formulario.
+5. Utiliza `useId` para generar identificadores únicos para los inputs y relacionarlos correctamente con sus `label`.
+6. Utiliza `useRef` para acceder al input del nombre.
+7. Al guardar, muestra la información del usuario en pantalla.
+8. El botón **"Limpiar"** debe devolver todos los campos a su estado inicial.
+
+**🔥 Reto extra — validación:**
+
+No permitas enviar el formulario si:
+
+* El nombre está vacío.
+* El correo está vacío.
+* La edad no es válida.
+
+Muestra un mensaje indicando qué campo necesita corregirse.
+---
+## 📁 Ubicación según Atomic Design
+
+Estructuraremos este ejercicio dividiendo responsabilidades y utilizando la nomenclatura **kebab-case** para cada archivo:
+
+* **Átomo (`src/components/atoms/form-input/form-input.jsx`):** Componente base que conecta una etiqueta con un campo de texto con su correspondiente archivo de estilos `form-input.css`.
+* **Molécula (`src/components/molecules/user-form-fields/user-form-fields.jsx`):** Agrupa los tres campos requeridos con su archivo de estilos `user-form-fields.css`.
+* **Organismo (`src/components/organisms/user-profile-form/user-profile-form.jsx`):** Maneja el estado, validaciones, referencias y eventos principales con su archivo de estilos `user-profile-form.css`.
+
+```text
+src/
+└── components/
+    ├── atoms/
+    │   └── form-input/
+    │       ├── form-input.css          # Estilos en kebab-case
+    │       └── form-input.jsx          # Átomo (Input con label)
+    ├── molecules/
+    │   └── user-form-fields/
+    │       ├── user-form-fields.css    # Estilos en kebab-case
+    │       └── user-form-fields.jsx    # Molécula (Grupo de campos)
+    └── organisms/
+        └── user-profile-form/
+            ├── user-profile-form.css   # Estilos en kebab-case
+            └── user-profile-form.jsx   # Organismo (Manejador principal)
+
+```
+
+---
+
+## 🌟 Buenas Prácticas de React Aplicadas
+
+1. **Atributos únicos con `useId`:** Garantiza la asociación entre la `<label>` y el `<input>` mediante un identificador único accesible.
+2. **Reenvío de referencias (`React.forwardRef`):** Permite acceder al nodo del DOM de un hijo desde un componente superior.
+3. **Formularios controlados con objeto único:** Manejar los datos con un solo objeto en lugar de múltiples `useState` individuales.
+4. **Validación de props con `PropTypes`:** Previene errores verificando el tipo de datos recibidos.
+
+---
+
+## 💻 Instalación de la Librería
+
+```bash
+# Instalación de PropTypes
+npm install prop-types
+
+```
+
+---
+
+## 💡 Pistas para el Ejercicio: Formulario de Usuario
+
+### 1. Estilos CSS (`form-input.css`)
+
+Ubicación: `src/components/atoms/form-input/form-input.css`
+
+```css
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.form-input-label {
+  font-weight: bold;
+}
+
+.form-input-field {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+```
+
+---
+
+### 2. Átomo `FormInput` (`form-input.jsx`)
+
+Ubicación: `src/components/atoms/form-input/form-input.jsx`
+
+```jsx
+import { useId, forwardRef } from 'react';
+import PropTypes from 'prop-types';
+import './form-input.css';
+
+export const FormInput = forwardRef(function FormInput({ label, name, type, value, onChange }, ref) {
+  // Pista 1: Genera un ID único para la accesibilidad
+  const inputId = /* usa el hook correspondiente */;
+
+  return (
+    <div className="form-input-group">
+      <label htmlFor={/* asigna el ID */} className="form-input-label">
+        {label}
+      </label>
+      <input
+        ref={ref}
+        id={/* asigna el ID */}
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        className="form-input-field"
+      />
+    </div>
+  );
+});
+
+FormInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+FormInput.defaultProps = {
+  type: 'text',
+};
+
+```
+
+---
+
+### 3. Molécula `UserFormFields` (`user-form-fields.jsx`)
+
+Ubicación: `src/components/molecules/user-form-fields/user-form-fields.jsx`
+
+```jsx
+import PropTypes from 'prop-types';
+import { FormInput } from '../../atoms/form-input/form-input';
+
+export function UserFormFields({ datosFormulario, onChange, nombreInputRef }) {
+  return (
+    <div className="user-form-fields">
+      {/* Campo Nombre: Conecta la referencia 'nombreInputRef' aquí */}
+      <FormInput
+        ref={/* pasa la referencia aquí */}
+        label="Nombre"
+        name="nombre"
+        value={datosFormulario.nombre}
+        onChange={onChange}
+      />
+
+      {/* Campo Correo: Completa los valores de las props */}
+      <FormInput
+        label="Correo"
+        name="correo"
+        type="email"
+        value={/* extrae el valor desde datosFormulario */}
+        onChange={onChange}
+      />
+
+      {/* Campo Edad: Completa las props necesarias */}
+      <FormInput
+        label="Edad"
+        name="edad"
+        type="number"
+        value={/* extrae el valor desde datosFormulario */}
+        onChange={onChange}
+      />
+    </div>
+  );
+}
+
+UserFormFields.propTypes = {
+  datosFormulario: PropTypes.shape({
+    nombre: PropTypes.string.isRequired,
+    correo: PropTypes.string.isRequired,
+    edad: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  }).isRequired,
+  onChange: PropTypes.func.isRequired,
+  nombreInputRef: PropTypes.object,
+};
+
+```
+
+---
+
+### 4. Organismo `UserProfileForm` (`user-profile-form.jsx`)
+
+Ubicación: `src/components/organisms/user-profile-form/user-profile-form.jsx`
+
+```jsx
+import { useState, useRef } from 'react';
+import { UserFormFields } from '../../molecules/user-form-fields/user-form-fields';
+
+export function UserProfileForm() {
+  const estadoInicial = { nombre: '', correo: '', edad: '' };
+
+  // Pista 1: Inicializa los estados para los datos, el resultado y los errores
+  const [formData, setFormData] = useState(estadoInicial);
+  const [datosGuardados, setDatosGuardados] = useState(null);
+  const [errorMensaje, setErrorMensaje] = useState('');
+
+  // Pista 2: Crea la referencia para el input del nombre
+  const nombreInputRef = useRef(null);
+
+  // Manejador del cambio en los inputs
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // Pista 3: Actualiza el estado dinámicamente según la propiedad 'name'
+    setFormData((prev) => ({
+      ...prev,
+      /* actualiza el campo correspondiente */
+    }));
+  };
+
+  // Manejador del botón "Limpiar"
+  const handleReset = () => {
+    // Pista 4: Resetea los estados y usa la referencia para enfocar el input
+    setFormData(estadoInicial);
+    setDatosGuardados(null);
+    setErrorMensaje('');
+    
+    if (nombreInputRef.current) {
+      /* enfoca el campo de nombre utilizando el nodo almacenado */
+    }
+  };
+
+  return (
+    <section className="user-profile-form">
+      <form onSubmit={/* asigna el handler del envío */}>
+        <UserFormFields
+          datosFormulario={formData}
+          onChange={handleChange}
+          nombreInputRef={nombreInputRef}
+        />
+
+        {/* Muestra mensaje de error si existe */}
+        {errorMensaje && <p className="mensaje-error">{errorMensaje}</p>}
+
+        <button type="submit">Guardar</button>
+        <button type="button" onClick={handleReset}>Limpiar</button>
+      </form>
+
+      {/* Renderizado del resultado */}
+      {datosGuardados && (
+        <div className="tarjeta-resultado">
+          <h3>Datos Ingresados:</h3>
+          {/* Muestra nombre, correo y edad guardados */}
+        </div>
+      )}
+    </section>
+  );
+}
+
+```
+
+---
+
+### 🚀 Reto Extra: Lógica de Envío y Validación (`onSubmit`)
+
+Ubicación: `src/components/organisms/user-profile-form/user-profile-form.jsx`
+
+```jsx
+const handleSubmit = (e) => {
+  // Pista 1: Evita que la página vuelva a cargarse
+  /* llama al método de evento correspondiente */;
+
+  // Pista 2: Validar si el nombre está vacío
+  if (!formData.nombre.trim()) {
+    setErrorMensaje('El nombre es obligatorio.');
+    return;
+  }
+
+  // Pista 3: Validar si el correo está vacío
+  if (!formData.correo.trim()) {
+    /* asigna el mensaje de error adecuado */
+    return;
+  }
+
+  // Pista 4: Validar edad correcta
+  if (!formData.edad || Number(formData.edad) <= 0) {
+    /* asigna el mensaje de error para edad */
+    return;
+  }
+
+  // Pista 5: Si pasa las validaciones, guarda y limpia errores
+  setErrorMensaje('');
+  setDatosGuardados(/* pasa los datos recopilados */);
+};
+
+```
+---
+
+## 🔴 Difícil — Lista de tareas con componentes
+
+**Meta:** construir una lista de tareas completa donde el usuario pueda **agregar, completar y eliminar tareas**, separando la aplicación en varios componentes.
+
+La aplicación debe permitir:
+
+* Escribir una tarea.
+* Agregarla a la lista.
+* Marcarla como completada.
+* Eliminarla.
+* Mostrar cuántas tareas existen.
+* Mostrar cuántas tareas están completadas.
+
+Cada tarea debe tener como mínimo:
+
+```text
+{
+  id,
+  title,
+  completed
+}
+```
+
+**Hooks y conceptos que debes utilizar:**
+
+* `useState`
+* `useRef`
+* `useId`
+* `onChange`
+* `onSubmit`
+* `onClick`
+* Props
+* Comunicación entre componentes
+* Actualización inmutable de arrays y objetos
+
+**Pistas para resolverlo:**
+
+1. Guarda la lista de tareas utilizando `useState`.
+2. Cada tarea debe ser un objeto independiente con su propio `id`.
+3. Para agregar una tarea, crea una nueva lista que contenga las tareas anteriores y la nueva tarea.
+4. No modifiques directamente el array existente.
+5. Para eliminar una tarea, crea una nueva lista excluyendo la tarea seleccionada.
+6. Para completar una tarea, crea una nueva lista donde solamente cambie la tarea seleccionada.
+7. Utiliza `onClick` para las acciones de completar y eliminar.
+8. Utiliza `onChange` para controlar el campo donde se escribe la tarea.
+9. Utiliza `onSubmit` para agregar la tarea mediante el formulario.
+10. Utiliza `useId` para identificar correctamente los elementos relacionados del formulario.
+11. Utiliza `useRef` para acceder al campo de texto y, después de agregar una tarea, devolverle el foco.
+
+### 🧩 Reto extra — Separar responsabilidades
+
+Divide la aplicación en componentes:
+
+```text
+TodoApp
+├── TodoForm
+└── TodoList
+    └── TodoItem
+```
+
+El estado de las tareas debe permanecer en `TodoApp`.
+
+`TodoForm` debe recibir mediante **props** la función necesaria para agregar una tarea.
+
+`TodoList` debe recibir mediante **props** las tareas y las funciones necesarias para modificarlas.
+
+`TodoItem` debe recibir mediante **props** la información de una tarea y las acciones disponibles.
+
+El objetivo es entender cómo **compartir estado entre componentes sin duplicarlo** y cómo utilizar **props + eventos** para comunicar acciones entre ellos.
+
+---
+
+## 📁 Ubicación según Atomic Design
+
+Dividiremos la aplicación respetando **Atomic Design** con la estructura solicitada y aplicando la nomenclatura **kebab-case** tanto a las carpetas como a los archivos:
+
+* **Átomo (`src/components/atoms/todo-item/todo-item.jsx`):** Representa una tarea individual con su casillero de verificación, título y botón de eliminar, con su archivo de estilos `todo-item.css`.
+* **Molécula (`src/components/molecules/todo-form/todo-form.jsx`):** Formulario para escribir y agregar nuevas tareas, con su archivo de estilos `todo-form.css`.
+* **Molécula (`src/components/molecules/todo-list/todo-list.jsx`):** Recibe el listado de tareas, maneja el caso cuando no hay elementos y renderiza los átomos `TodoItem`, con su archivo de estilos `todo-list.css`.
+* **Organismo (`src/components/organisms/todo-app/todo-app.jsx`):** Almacena el estado global de la aplicación, calcula los contadores (totales y completadas) y pasa las callbacks correspondientes a sus componentes hijos, con su archivo de estilos `todo-app.css`.
+
+```text
+src/
+└── components/
+    ├── atoms/
+    │   └── todo-item/
+    │       ├── todo-item.css           # Estilos del ítem (kebab-case)
+    │       └── todo-item.jsx           # Átomo (Muestra una tarea)
+    ├── molecules/
+    │   ├── todo-form/
+    │   │   ├── todo-form.css          # Estilos del formulario (kebab-case)
+    │   │   └── todo-form.jsx          # Molécula (Agregar tarea)
+    │   └── todo-list/
+    │       ├── todo-list.css          # Estilos de la lista (kebab-case)
+    │       └── todo-list.jsx          # Molécula (Iterador de tareas)
+    └── organisms/
+        └── todo-app/
+            ├── todo-app.css           # Estilos de la aplicación (kebab-case)
+            └── todo-app.jsx           # Organismo (Gestor principal del estado)
+
+```
+
+---
+
+## 🌟 Buenas Prácticas de React Aplicadas
+
+1. **Inmutabilidad en arreglos:** Nunca agregues elementos con `.push()`, ni elimines con `.splice()`, ni cambies propiedades directas de un objeto. Utiliza métodos que retornen nuevos arreglos (`[...]`, `.filter()`, `.map()`).
+2. **Elevación de estado (Lifting State Up):** El estado principal vive únicamente en `todo-app.jsx`. Los componentes hijos se comunican hacia arriba mediante funciones *callback* pasadas por **props**.
+3. **Identificadores accesibles:** Uso de `useId` en `todo-form.jsx` para enlazar el `<label>` con el `<input>`.
+4. **Acceso al DOM con `useRef`:** Enfoque del `<input>` mediante `.focus()` tras agregar una nueva tarea.
+5. **Validación de tipos:** Garantizar con `PropTypes` la forma exacta de los objetos (`PropTypes.shape`) y las acciones pasadas como funciones.
+
+---
+
+## 💻 Instalación de la Librería
+
+```bash
+# Instalación de PropTypes
+npm install prop-types
+
+```
+
+---
+
+## 💡 Pistas para el Ejercicio: Lista de Tareas
+
+### 1. Estilos CSS del Átomo (`todo-item.css`)
+
+Ubicación: `src/components/atoms/todo-item/todo-item.css`
+
+```css
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.todo-item-completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+```
+
+---
+
+### 2. Átomo `TodoItem` (`todo-item.jsx`)
+
+Ubicación: `src/components/atoms/todo-item/todo-item.jsx`
+
+Recibe la tarea e invoca las callbacks pasadas por props enviando el `id` correspondiente.
+
+```jsx
+import PropTypes from 'prop-types';
+import './todo-item.css';
+
+export function TodoItem({ todo, onToggle, onDelete }) {
+  return (
+    <li className="todo-item">
+      <label className={todo.completed ? 'todo-item-completed' : ''}>
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={/* Pista: llama a la función onToggle pasando el id de la tarea */}
+        />
+        {todo.title}
+      </label>
+
+      <button onClick={/* Pista: llama a la función onDelete pasando el id de la tarea */}>
+        Eliminar
+      </button>
+    </li>
+  );
+}
+
+TodoItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+```
+
+---
+
+### 3. Molécula `TodoForm` (`todo-form.jsx`)
+
+Ubicación: `src/components/molecules/todo-form/todo-form.jsx`
+
+Maneja el texto local del input, genera un ID de accesibilidad con `useId` y usa `useRef` para enfocar el campo tras agregar una tarea.
+
+```jsx
+import { useState, useRef, useId } from 'react';
+import PropTypes from 'prop-types';
+import './todo-form.css';
+
+export function TodoForm({ onAddTodo }) {
+  const [texto, setTexto] = useState('');
+  
+  // Pista 1: Genera un ID accesible y una ref para el input
+  const inputId = /* usa el hook useId */;
+  const inputRef = /* usa el hook useRef */;
+
+  const handleSubmit = (e) => {
+    // Pista 2: Detén el envío del formulario
+    /* evita la recarga de página */;
+
+    if (!texto.trim()) return;
+
+    // Pista 3: Envía el texto a la callback del padre y limpia el estado local
+    onAddTodo(texto.trim());
+    setTexto('');
+
+    // Pista 4: Devuelve el foco al input usando la referencia
+    if (inputRef.current) {
+      /* invoca el método para dar foco */;
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="todo-form">
+      <label htmlFor={/* pasa el ID generado */}>Nueva Tarea:</label>
+      <input
+        id={/* pasa el ID generado */}
+        ref={inputRef}
+        type="text"
+        value={texto}
+        onChange={(e) => setTexto(e.target.value)}
+        placeholder="Escribe una tarea..."
+      />
+      <button type="submit">Agregar</button>
+    </form>
+  );
+}
+
+TodoForm.propTypes = {
+  onAddTodo: PropTypes.func.isRequired,
+};
+
+```
+
+---
+
+### 4. Molécula `TodoList` (`todo-list.jsx`)
+
+Ubicación: `src/components/molecules/todo-list/todo-list.jsx`
+
+Recibe la lista de tareas, valida si está vacía e itera pasando las funciones al átomo.
+
+```jsx
+import PropTypes from 'prop-types';
+import { TodoItem } from '../../atoms/todo-item/todo-item';
+import './todo-list.css';
+
+export function TodoList({ todos, onToggleTodo, onDeleteTodo }) {
+  // Pista: Aplica un retorno temprano si no hay elementos
+  if (todos.length === 0) {
+    return <p className="todo-list-empty">No hay tareas creadas.</p>;
+  }
+
+  return (
+    <ul className="todo-list">
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={/* pasa la callback para cambiar estado */}
+          onDelete={/* pasa la callback para eliminar */}
+        />
+      ))}
+    </ul>
+  );
+}
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onToggleTodo: PropTypes.func.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+};
+
+```
+
+---
+
+### 5. Organismo `TodoApp` (`todo-app.jsx`)
+
+Ubicación: `src/components/organisms/todo-app/todo-app.jsx`
+
+Mantiene el estado principal de la lista, calcula los totales e implementa las funciones de modificación inmutable.
+
+```jsx
+import { useState } from 'react';
+import { TodoForm } from '../../molecules/todo-form/todo-form';
+import { TodoList } from '../../molecules/todo-list/todo-list';
+import './todo-app.css';
+
+export function TodoApp() {
+  const [todos, setTodos] = useState([]);
+
+  // Pista 1: Crear una nueva tarea sin modificar el arreglo anterior
+  const handleAddTodo = (title) => {
+    const newTodo = {
+      id: Date.now(),
+      title,
+      completed: false,
+    };
+
+    // Actualización inmutable agregando la nueva tarea
+    setTodos((prevTodos) => [/* combina el arreglo previo con newTodo */]);
+  };
+
+  // Pista 2: Invertir el estado 'completed' de la tarea seleccionada
+  const handleToggleTodo = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === id) {
+          // Retorna una copia del objeto invirtiendo 'completed'
+          return { ...todo, completed: /* invierte el valor booleano */ };
+        }
+        return todo;
+      })
+    );
+  };
+
+  // Pista 3: Eliminar una tarea conservando solo las que tengan ID diferente
+  const handleDeleteTodo = (id) => {
+    setTodos((prevTodos) => /* filtra las tareas excluyendo el id recibido */);
+  };
+
+  // Pista 4: Métricas calculadas en cada renderizado
+  const totalTareas = todos.length;
+  const tareasCompletadas = todos.filter((todo) => todo.completed).length;
+
+  return (
+    <section className="todo-app">
+      <h2>Lista de Tareas</h2>
+      
+      <div className="todo-app-stats">
+        <p>Total: {totalTareas}</p>
+        <p>Completadas: {tareasCompletadas}</p>
+      </div>
+
+      <TodoForm onAddTodo={handleAddTodo} />
+      
+      <TodoList
+        todos={todos}
+        onToggleTodo={handleToggleTodo}
+        onDeleteTodo={handleDeleteTodo}
+      />
+    </section>
+  );
+}
+
+```
 
 ------------------------------------------------------------------------
 
-## Día 4 --- Traer información de afuera y reaccionar a cambios
+## Día 4 — 🔄 Efectos, ciclo de vida y sincronización con datos externos
+**`useEffect` · `useLayoutEffect` · `useState` · `useRef`**
 
 ### 🎯 Qué aprender
 
@@ -839,7 +1800,8 @@ escrito y los muestre. Pistas para resolverlo:
 
 ------------------------------------------------------------------------
 
-## Día 5 --- Herramientas más avanzadas y reutilizar lógica
+## Día 5 — 🧩 Hooks avanzados y creación de Custom Hooks
+**`useMemo` · `useCallback` · `useContext` · `useTransition` · `useDeferredValue` · `useImperativeHandle` · Custom Hooks**
 
 ### 🎯 Qué aprender
 
@@ -926,7 +1888,8 @@ cualquier componente sin pasarlo manualmente. Pistas para resolverlo:
 
 ------------------------------------------------------------------------
 
-## Día 6 --- Varias pantallas (rutas) y datos compartidos en toda la app
+## Día 6 — 🌐 Componentes, rutas y estado compartido
+**Componentes · `useContext` · `useReducer` · React Router · Custom Hooks**
 
 ### 🎯 Qué aprender
 
@@ -1009,7 +1972,7 @@ resolverlo:
 
 ------------------------------------------------------------------------
 
-## Día 7 --- Proyecto final y publicarlo en internet
+## Día 7 — 🚀 Proyecto final: integrar Hooks, componentes y publicar
 
 ### 🎯 Qué aprender
 
