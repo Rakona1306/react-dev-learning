@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react"; // libreria necesaria para usar estados
 import { useRef } from "react"; // usar referencias
 
-export default function Button({message}) {
+export default function Button({ message }) {
   const [count, setCount] = useState(0);
   const ref = useRef(0);
   function handleClickRef() {
@@ -13,20 +13,34 @@ export default function Button({message}) {
     setCount(count + 1); //set solo puede ser usado dentro de la funcion donde el estado fue declarado
     // alert(count); el valor sera del anterior renderizado
     // setCount(count => count + 1) de esta manera al imprimirlo si se actualizara
-    handleClickRef()
+    handleClickRef();
   }
 
   return (
     <div>
-      <button onClick={handleClickPlus}> sumar</button> {/* para abrir y */}
-      <button onClick={() => setCount(count - 1)}> restar</button>{" "}
-      {/* prueba con operador flecha*/}
+      <ButtonAction label="sumar" onClick={handleClickPlus} />
+      <ButtonAction label = "restar" onClick={()=> setCount(count -1)} />
+        <ButtonAction2 onClick={()=> setCount(count -1)}>
+            <h2>Hello world</h2>
+            <p>llamando desde children</p>
+        </ButtonAction2>
+
       <button onClick={() => setCount(0)}> reiniciar</button>
-      <h1>{count}</h1>
-      <h1>{ref.current}</h1>
-      <h1>{message}</h1>
+      <p>{count}</p>
+      <p>{ref.current}</p>
+      <p>{message}</p>
     </div>
   );
+
   // se puede usar el operador flecha en los eventos () => {setCount(count+1)}
   // preguntar si es posible enviar "eventos" por props
+}
+function ButtonAction({ label, onClick }) {
+  return <button onClick={onClick}>{label}</button>;
+}
+function ButtonAction2({onClick, children}){
+    return(
+        <button onClick={onClick} >{children}</button>
+
+    );
 }
