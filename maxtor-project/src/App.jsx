@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Ejercicio1 from './pages/Ejercicio1'
 import Day1 from './pages/Day1'
+import Day2 from './pages/Day2'
 import Day3 from './pages/Day3'
 
 function App() {
