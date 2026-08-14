@@ -1717,86 +1717,2101 @@ export function TodoApp() {
 
 ------------------------------------------------------------------------
 
-## Día 4 — 🔄 Efectos, ciclo de vida y sincronización con datos externos
-**`useEffect` · `useLayoutEffect` · `useState` · `useRef`**
+# Día 4 — 🔄 Efectos, ciclo de vida y sincronización con datos externos
 
-### 🎯 Qué aprender
+**`useEffect` · `useLayoutEffect` · `useState` · `useRef` · Eventos**
 
--   Cómo ejecutar código automáticamente cuando la pantalla aparece por
-    primera vez o cuando algo cambia.
--   Cómo "limpiar" cosas que quedaron pendientes cuando el componente ya
-    no se usa.
--   Cómo pedir datos a internet y mostrarlos, avisando mientras se están
-    cargando o si algo falla.
+---
 
-### 📦 Qué debes entregar hoy
+## 🎯 Qué aprender
 
-Una pantalla que, al abrirse, pida datos a internet automáticamente y
-los muestre, con un mensaje mientras carga.
+En este día aprenderás cómo React maneja el **estado, los eventos, los efectos y la interacción con elementos externos al componente**.
 
-### 💪 Ejercicios
+### `useState`
 
-**Fácil --- Mensaje al abrir la pantalla** Meta: mostrar un mensaje en
-la consola apenas se abre la pantalla. Pistas para resolverlo:
+Aprenderás:
 
-1.  Busca cómo ejecutar código "una sola vez" cuando el componente
-    aparece por primera vez.
-2.  Prueba qué pasa si le dices que se repita cada vez que algo cambia,
-    versus solo una vez.
+* Qué es el estado de un componente.
+* Cómo crear estado.
+* Cómo actualizar estado.
+* Qué significa que React vuelva a renderizar un componente.
+* Cómo actualizar el estado basándose en su valor anterior.
+* Cómo trabajar con objetos y arrays dentro del estado.
+* Por qué no debes modificar directamente el estado.
+* Cómo distinguir entre estado y datos derivados.
+* Cómo evitar estados innecesarios.
 
--   Reto extra: compara en consola la diferencia entre ambos
-    comportamientos, anotando cuándo se ejecuta cada uno.
+### Eventos de React
 
-**Medio --- Traer datos con estado de carga** Meta: al abrir la
-pantalla, pedir datos a una página de prueba y mostrarlos, con un
-mensaje de "cargando" mientras llegan, y otro si algo sale mal. Pistas
-para resolverlo:
+Aprenderás:
 
-1.  Necesitas recordar tres cosas: si está cargando, si hubo un error, y
-    los datos ya obtenidos.
-2.  Piensa en qué momento cambia cada una de esas tres cosas.
-3.  Muestra en pantalla un mensaje distinto según en qué momento estés.
+* Cómo responder a `clicks`.
+* Cómo manejar cambios en inputs.
+* Cómo manejar formularios.
+* Cómo utilizar `onClick`.
+* Cómo utilizar `onChange`.
+* Cómo utilizar `onSubmit`.
+* Cómo utilizar `onFocus` y `onBlur`.
+* Cómo utilizar eventos de teclado.
+* Qué es el objeto `event`.
+* Qué significa `event.target`.
+* Cómo utilizar `preventDefault`.
+* Cómo funciona la propagación de eventos.
 
--   Reto extra: agrega un botón que vuelva a pedir los datos sin
-    recargar toda la página.
+### `useEffect`
 
-**Difícil --- Buscador en vivo** Meta: crear un campo de búsqueda que,
-mientras el usuario escribe, pida datos a internet relacionados con lo
-escrito y los muestre. Pistas para resolverlo:
+Aprenderás:
 
-1.  Piensa qué pasaría si pides datos por cada letra que el usuario
-    escribe (¿es buena idea?).
-2.  Investiga una forma de "esperar un poquito" después de que el
-    usuario deja de escribir antes de pedir los datos (esto se llama
-    comúnmente "esperar a que se calme").
-3.  Piensa qué pasa con una búsqueda anterior si el usuario ya escribió
-    algo nuevo: ¿cómo evitas mostrar resultados viejos?
+* Qué problema resuelve `useEffect`.
+* Qué significa un efecto secundario.
+* Cuándo utilizar `useEffect`.
+* Cuándo NO utilizar `useEffect`.
+* Cómo ejecutar código después de un render.
+* Cómo utilizar el array de dependencias.
+* Qué significa `[]`.
+* Qué significa tener dependencias.
+* Cómo reaccionar ante cambios de estado o props.
+* Cómo realizar sincronización con APIs externas.
+* Cómo trabajar con timers.
+* Cómo trabajar con eventos del navegador.
+* Cómo trabajar con suscripciones.
+* Cómo realizar cleanup.
+* Cómo evitar loops infinitos.
+* Cómo evitar efectos innecesarios.
+* Cómo entender `StrictMode`.
 
--   Reto extra: si el usuario borra todo el texto, limpia también los
-    resultados mostrados.
+### `useLayoutEffect`
 
-> En los siguientes ejercicios agrega pistas similares como:
->
-> ``` jsx
-> useState(...)
-> useEffect(()=>{},[])
-> lista.map(...)
-> useContext(...)
-> <Routes />
-> lazy(...)
-> ```
+Aprenderás:
 
-### 🔗 Cursos
+* Qué diferencia existe entre `useEffect` y `useLayoutEffect`.
+* Cuándo se ejecuta `useLayoutEffect`.
+* Qué relación tiene con el navegador y el proceso de paint.
+* Cómo medir elementos del DOM.
+* Cómo utilizar `getBoundingClientRect()`.
+* Cuándo utilizarlo para evitar parpadeos visuales.
+* Por qué no debes utilizarlo innecesariamente.
+* Por qué `useEffect` debe ser la opción por defecto en la mayoría de casos.
 
--   \[ \]
+### `useRef`
 
-### ✅ Buenas prácticas
+Aprenderás:
 
--   \[ \]
+* Qué es una referencia.
+* Cómo acceder a elementos del DOM.
+* Cómo utilizar `.current`.
+* Cómo enfocar un input.
+* Cómo conservar información entre renders.
+* Por qué modificar un `ref` no provoca un render.
+* Diferencias entre `useRef` y `useState`.
+* Cuándo utilizar `useRef`.
+* Cuándo NO utilizar `useRef`.
 
-### 📚 Documentación
+---
 
--   \[ \]
+# ⭐ Orden recomendado para estudiar los recursos
+
+No necesitas consumir los 30+ recursos completos de manera lineal.
+
+### Primero — Fundamentos
+
+1. [Estado como una instantánea](https://es.react.dev/learn/state-as-a-snapshot)
+2. [Responder a eventos](https://es.react.dev/learn/responding-to-events)
+3. [useState](https://es.react.dev/reference/react/useState)
+4. [useRef](https://es.react.dev/reference/react/useRef)
+
+### Segundo — Effects
+
+5. [useEffect](https://es.react.dev/reference/react/useEffect)
+6. [Sincronizar con Effects](https://es.react.dev/learn/synchronizing-with-effects)
+7. [Ciclo de vida de los Effects](https://es.react.dev/learn/lifecycle-of-reactive-effects)
+8. [¿Necesitas un Effect?](https://es.react.dev/learn/you-might-not-need-an-effect)
+
+### Tercero — Buenas prácticas
+
+9. [Separar eventos de Effects](https://es.react.dev/learn/separating-events-from-effects)
+10. [Eliminar dependencias de Effects](https://es.react.dev/learn/removing-effect-dependencies)
+11. [Reglas de los Hooks](https://es.react.dev/reference/rules)
+
+### Cuarto — DOM y layout
+
+12. [Manipular el DOM con refs](https://es.react.dev/learn/manipulating-the-dom-with-refs)
+13. [useLayoutEffect](https://es.react.dev/reference/react/useLayoutEffect)
+
+### Quinto — Video
+
+14. [Curso de React — midudev](https://cursoreact.dev/)
+15. [useEffect + Fetch API — JAB](https://www.youtube.com/watch?v=pBNHeb8QTN0)
+16. [Buenas prácticas de useEffect — Manuel Sánchez](https://www.youtube.com/watch?v=fvERkIfFLmo)
+
+---
+
+Lo importante es aprender a identificar **qué problema estás intentando resolver**.
+
+```text
+¿Necesito almacenar información que cambia la UI?
+                    ↓
+                useState
+
+
+¿Necesito responder a una interacción?
+                    ↓
+                  Evento
+
+
+¿Necesito sincronizarme con algo externo?
+                    ↓
+                useEffect
+
+
+¿Necesito acceder a un elemento DOM?
+                    ↓
+                 useRef
+
+
+¿Necesito medir/modificar layout antes del paint?
+                    ↓
+            useLayoutEffect
+```
+---
+
+
+# 📚 Documentación
+
+> **Prioridad:** documentación oficial de React en español.
+
+---
+
+### 1. Documentación oficial de React
+
+[React — documentación oficial en español](https://es.react.dev/)
+
+Fuente principal para estudiar React. La documentación oficial actual está organizada en aprendizaje y referencia de API.
+
+---
+
+### 2. `useState`
+
+[useState — React](https://es.react.dev/reference/react/useState)
+
+Documentación oficial del Hook:
+
+```text
+useState
+```
+
+---
+
+### 3. `useEffect`
+
+[useEffect — React](https://es.react.dev/reference/react/useEffect)
+
+Documentación oficial del Hook para sincronización con sistemas externos.
+
+---
+
+### 4. `useLayoutEffect`
+
+[useLayoutEffect — React](https://es.react.dev/reference/react/useLayoutEffect)
+
+Documentación oficial sobre Effects relacionados con el layout.
+
+---
+
+### 5. `useRef`
+
+[useRef — React](https://es.react.dev/reference/react/useRef)
+
+Documentación oficial para referencias y valores persistentes.
+
+---
+
+### 6. Responder a eventos
+
+[Responder a eventos — React](https://es.react.dev/learn/responding-to-events)
+
+Documentación oficial sobre:
+
+* `onClick`
+* handlers
+* propagación
+* eventos
+* `preventDefault`
+
+---
+
+### 7. Estado como una instantánea
+
+[Estado como una instantánea — React](https://es.react.dev/learn/state-as-a-snapshot)
+
+Explica uno de los conceptos fundamentales de React:
+
+> El estado pertenece a un render concreto.
+
+---
+
+### 8. Actualizar objetos en el estado
+
+[Actualizar objetos en el estado — React](https://es.react.dev/learn/updating-objects-in-state)
+
+Explica cómo actualizar correctamente objetos sin mutar el estado.
+
+---
+
+### 9. Actualizar arrays en el estado
+
+[Actualizar arrays en el estado — React](https://es.react.dev/learn/updating-arrays-in-state)
+
+Explica las formas correctas de modificar arrays almacenados en el estado.
+
+---
+
+### 10. Sincronizar con Effects
+
+[Sincronizar con Effects — React](https://es.react.dev/learn/synchronizing-with-effects)
+
+Una de las páginas fundamentales para este día.
+
+---
+
+### 11. Ciclo de vida de los Effects
+
+[El ciclo de vida de los Effects — React](https://es.react.dev/learn/lifecycle-of-reactive-effects)
+
+Explica cómo pensar sobre el ciclo de vida de un Effect.
+
+---
+
+### 12. ¿Necesitas un Effect?
+
+[¿Necesitas un Effect? — React](https://es.react.dev/learn/you-might-not-need-an-effect)
+
+Probablemente la documentación más importante para aprender a **no abusar de `useEffect`**.
+
+---
+
+### 13. Separar eventos de Effects
+
+[Separar los Events de los Effects — React](https://es.react.dev/learn/separating-events-from-effects)
+
+Ayuda a distinguir eventos causados por el usuario de sincronizaciones causadas por cambios reactivos.
+
+---
+
+### 14. Eliminar dependencias de Effects
+
+[Eliminar dependencias de Effects — React](https://es.react.dev/learn/removing-effect-dependencies)
+
+Fundamental para entender correctamente:
+
+```jsx
+useEffect(() => {
+  // ...
+}, [dependencies]);
+```
+
+---
+
+### 15. Referenciar valores con refs
+
+[Referenciar valores con refs — React](https://es.react.dev/learn/referencing-values-with-refs)
+
+Explica el uso de `useRef` para conservar información entre renders.
+
+---
+
+### 16. Manipular el DOM con refs
+
+[Manipular el DOM con refs — React](https://es.react.dev/learn/manipulating-the-dom-with-refs)
+
+Fundamental para comprender:
+
+```jsx
+ref
+```
+
+y:
+
+```jsx
+ref.current
+```
+
+---
+
+### 17. Reutilizar lógica con Hooks personalizados
+
+[Reutilizar lógica con Hooks personalizados — React](https://es.react.dev/learn/reusing-logic-with-custom-hooks)
+
+Te prepara para posteriormente crear Hooks como:
+
+```text
+useFetch
+usePagination
+useDebounce
+useModal
+useAuth
+```
+
+---
+
+### 18. Reglas de los Hooks
+
+[Reglas de los Hooks — React](https://es.react.dev/reference/rules)
+
+Explica las reglas que deben respetarse al utilizar Hooks.
+
+---
+
+### 19. Referencia de Hooks
+
+[Referencia de Hooks — React](https://es.react.dev/reference/react/hooks)
+
+Referencia general de los Hooks disponibles en React.
+
+---
+
+### 20. API de React
+
+[Referencia de API de React](https://es.react.dev/reference/react)
+
+Referencia oficial de las APIs de React.
+
+---
+
+# ✅ Buenas prácticas
+
+> **Objetivo:** aprender no solamente "cómo funciona" cada Hook, sino **cuándo utilizarlo y cuándo evitarlo**.
+
+---
+
+### 1. Buenas prácticas oficiales de `useEffect`
+
+[¿Necesitas un Effect? — React](https://es.react.dev/learn/you-might-not-need-an-effect)
+
+Una de las lecturas más importantes de todo este día.
+
+React explica situaciones donde utilizar `useEffect` es innecesario.
+
+---
+
+### 2. Sincronizar con Effects
+
+[Sincronizar con Effects — React](https://es.react.dev/learn/synchronizing-with-effects)
+
+Explica el concepto moderno de Effects y cómo pensar correctamente sobre ellos.
+
+---
+
+### 3. Lifecycle de Effects
+
+[El ciclo de vida de los Effects — React](https://es.react.dev/learn/lifecycle-of-reactive-effects)
+
+Muy importante para comprender que los Effects tienen su propio ciclo de sincronización.
+
+---
+
+### 4. Separar eventos de Effects
+
+[Separar los Events de los Effects — React](https://es.react.dev/learn/separating-events-from-effects)
+
+Ayuda a diferenciar:
+
+```text
+Evento del usuario
+        vs
+Effect de sincronización
+```
+
+Esto evita muchos `useEffect` innecesarios.
+
+---
+
+### 5. Eliminar dependencias de Effects
+
+[Eliminar dependencias de Effects — React](https://es.react.dev/learn/removing-effect-dependencies)
+
+Material importante para comprender correctamente el array de dependencias.
+
+---
+
+### 6. Buenas prácticas de useEffect — Manuel Sánchez
+
+[Vuélvete un experto en las buenas prácticas de useEffect](https://www.youtube.com/watch?v=fvERkIfFLmo)
+
+Video centrado específicamente en buenas prácticas, cleanup, loading, error y dependencias.
+
+---
+
+### 7. Reglas de Hooks
+
+[Reglas de los Hooks — React](https://es.react.dev/reference/rules)
+
+Debes conocer las reglas fundamentales para utilizar Hooks correctamente.
+
+---
+
+### 8. Hooks personalizados
+
+[Reutilizar lógica con Hooks personalizados — React](https://es.react.dev/learn/reusing-logic-with-custom-hooks)
+
+Aprenderás cuándo tiene sentido extraer lógica a un custom Hook.
+
+---
+
+### 9. Estado derivado y Effects
+
+[¿Necesitas un Effect? — React](https://es.react.dev/learn/you-might-not-need-an-effect)
+
+Especialmente importante para evitar patrones como:
+
+```text
+state
+  ↓
+useEffect
+  ↓
+otro state
+  ↓
+render
+```
+
+cuando simplemente podrías calcular el valor durante el render.
+
+---
+
+### 10. Pensamiento correcto sobre Effects
+
+[Sincronizar con Effects — React](https://es.react.dev/learn/synchronizing-with-effects)
+
+La recomendación fundamental es pensar en un Effect como una forma de **sincronizar el componente con un sistema externo**, no simplemente como "código que se ejecuta después del render".
+
+---
+
+### 11. Buenas prácticas para `useRef`
+
+[Referenciar valores con refs — React](https://es.react.dev/learn/referencing-values-with-refs)
+
+Explica cuándo un ref es apropiado y por qué cambiar `.current` no provoca un render.
+
+---
+
+### 12. Buenas prácticas para eventos
+
+[Responder a eventos — React](https://es.react.dev/learn/responding-to-events)
+
+Explica cómo estructurar correctamente los handlers y cómo funciona la propagación de eventos.
+
+---
+
+
+# 🔗 Cursos
+
+> **Objetivo:** aquí encontrarás cursos y clases en video en español para aprender React, Hooks, eventos, `useState`, `useEffect` y `useRef`.
+
+### 1. Curso React — midudev
+
+[Curso de React.js desde cero — midudev](https://cursoreact.dev/)
+
+Curso completo de React en español. Es uno de los recursos principales que recomiendo para acompañar este día.
+
+---
+
+### 2. Curso React — JAB
+
+[Curso de React desde cero — JAB](https://www.youtube.com/watch?v=pBNHeb8QTN0)
+
+La serie explica React desde cero y contiene clases específicas sobre eventos, `useRef`, `useState` y `useEffect`. La clase de `useEffect` también aborda `fetch`.
+
+---
+
+### 3. useEffect + Fetch API — JAB
+
+[useEffect, Fetch API y Spread Operator](https://www.youtube.com/watch?v=pBNHeb8QTN0)
+
+Especialmente útil para la parte de este día relacionada con:
+
+* `useEffect`
+* Fetch API
+* datos externos
+* actualización del estado
+
+---
+
+### 4. Eventos + useRef — JAB
+
+[Eventos, funciones, target y useRef](https://www.youtube.com/results?search_query=JAB+React+eventos+useRef+target+espa%C3%B1ol)
+
+Clase centrada en eventos y `useRef`.
+
+---
+
+### 5. useState — JAB
+
+[React useState — JAB](https://www.youtube.com/results?search_query=JAB+React+useState+espa%C3%B1ol)
+
+Para reforzar específicamente el funcionamiento del estado.
+
+---
+
+### 6. useEffect — Manuel Sánchez WEB
+
+[Buenas prácticas de useEffect](https://www.youtube.com/watch?v=fvERkIfFLmo)
+
+Video específicamente dedicado a `useEffect`, incluyendo dependencias, loading, error y cleanup.
+
+---
+
+### 7. Curso React — Fazt
+
+[Curso React en español — Fazt](https://www.youtube.com/results?search_query=Fazt+React+curso+espa%C3%B1ol+Hooks)
+
+Curso y clases de React en español.
+
+---
+
+### 8. Curso React — HolaMundo
+
+[Curso React — HolaMundo](https://www.youtube.com/results?search_query=HolaMundo+React+curso+espa%C3%B1ol)
+
+Contenido de React y desarrollo frontend en español.
+
+---
+
+### 9. Curso React — Fernando Herrera
+
+[React desde cero — Fernando Herrera](https://www.youtube.com/results?search_query=Fernando+Herrera+React+curso+espa%C3%B1ol+Hooks)
+
+Curso y clases de React con especial atención a Hooks y arquitectura de aplicaciones.
+
+---
+
+### 10. Curso React — EDteam
+
+[React en español — EDteam](https://www.youtube.com/results?search_query=EDteam+React+Hooks+espa%C3%B1ol)
+
+Contenido de React y Hooks en español.
+
+---
+
+### 11. Curso React — Código Facilito
+
+[React — Código Facilito](https://www.youtube.com/results?search_query=C%C3%B3digo+Facilito+React+Hooks+espa%C3%B1ol)
+
+Material complementario para React y Hooks.
+
+---
+
+### 12. React Hooks — Pablo Monteserín
+
+[React Hooks — Pablo Monteserín](https://pablomonteserin.com/curso/react/)
+
+Curso en español con contenido relacionado con:
+
+* `useState`
+* `useEffect`
+* `useRef`
+* Fetch
+* Axios
+
+---
+
+# 📦 Qué debes entregar hoy
+
+Una pequeña aplicación React que demuestre que puedes trabajar con:
+
+* `useState`
+* `useEffect`
+* `useRef`
+* Eventos de React
+* Formularios
+* Inputs controlados
+* Renderizado condicional
+* Renderizado de listas
+* `fetch`
+* Estados de carga y error
+* Cleanup
+* Comunicación con una API externa
+
+Los ejercicios aumentarán progresivamente de dificultad.
+
+---
+
+# 💪 Ejercicios
+
+# 🟢 Fácil — Formulario interactivo
+
+## 🎯 Meta
+
+Crear un pequeño formulario interactivo que permita al usuario ingresar su nombre y mostrar información sobre las acciones que realiza.
+
+La pantalla debería tener algo parecido a:
+
+```text
+-----------------------------------
+       PERFIL DE USUARIO
+-----------------------------------
+
+Nombre:
+[________________________]
+
+Email:
+[________________________]
+
+[ Limpiar ]
+
+Hola, Juan
+
+Estado:
+Input activo
+-----------------------------------
+```
+
+El objetivo principal es practicar **estado y eventos de React**.
+
+---
+
+## 💡 Pistas para resolverlo
+
+### Pista 1 — Estado
+
+Necesitas guardar el valor de los inputs.
+
+Piensa en:
+
+```jsx
+const [name, setName] = useState('');
+```
+
+Y otro estado para:
+
+```jsx
+const [email, setEmail] = useState('');
+```
+
+Tú debes decidir cómo conectar cada estado con su input.
+
+---
+
+### Pista 2 — Input controlado
+
+Investiga cómo utilizar:
+
+```jsx
+<input
+  value={...}
+  onChange={...}
+/>
+```
+
+Pregunta:
+
+> ¿Qué propiedad controla el valor actual del input?
+
+---
+
+### Pista 3 — onChange
+
+Cuando el usuario escriba:
+
+```jsx
+onChange={(event) => {
+  // ...
+}}
+```
+
+Investiga:
+
+```jsx
+event.target.value
+```
+
+La idea es que el estado represente exactamente lo que está escrito.
+
+---
+
+### Pista 4 — onFocus
+
+Cuando el usuario entre al campo:
+
+```jsx
+onFocus={() => {
+  // ...
+}}
+```
+
+puedes cambiar un estado que represente:
+
+```text
+Campo activo
+```
+
+Piensa en algo como:
+
+```jsx
+const [focusedField, setFocusedField] = useState(null);
+```
+
+---
+
+### Pista 5 — onBlur
+
+Cuando el usuario abandone el campo:
+
+```jsx
+onBlur={() => {
+  // ...
+}}
+```
+
+puedes actualizar nuevamente:
+
+```jsx
+setFocusedField(...)
+```
+
+Pregunta:
+
+> ¿Cómo podrías saber si está enfocado `name` o `email`?
+
+---
+
+### Pista 6 — onKeyDown
+
+Agrega un comportamiento especial cuando el usuario presione:
+
+```text
+Enter
+```
+
+Investiga:
+
+```jsx
+onKeyDown={(event) => {
+  // ...
+}}
+```
+
+y:
+
+```jsx
+event.key
+```
+
+Puedes detectar:
+
+```jsx
+if (event.key === 'Enter') {
+  // ...
+}
+```
+
+Tú decides qué debería suceder.
+
+---
+
+### Pista 7 — onClick
+
+El botón:
+
+```jsx
+<button>
+  Limpiar
+</button>
+```
+
+debe eliminar la información introducida.
+
+Piensa en:
+
+```jsx
+setName(...)
+setEmail(...)
+```
+
+No necesitas recargar la página.
+
+---
+
+### Pista 8 — Mostrar información
+
+Debajo del formulario muestra algo como:
+
+```jsx
+<p>
+  Hola, {name}
+</p>
+```
+
+Pero piensa:
+
+> ¿Qué debería mostrarse si todavía no existe un nombre?
+
+Investiga:
+
+```text
+renderizado condicional
+```
+
+---
+
+### Pista 9 — Validación sencilla
+
+Si el usuario abandona el campo vacío, puedes mostrar:
+
+```text
+El nombre es obligatorio
+```
+
+Investiga:
+
+```jsx
+if (!name.trim()) {
+  // ...
+}
+```
+
+No necesitas crear todavía un sistema complejo de validación.
+
+---
+
+### ⭐ Reto extra
+
+Agrega:
+
+```text
+Contador de caracteres
+```
+
+Por ejemplo:
+
+```text
+Nombre:
+[ Juan Carlos ]
+
+Caracteres: 11
+```
+
+Pista:
+
+```jsx
+name.length
+```
+
+---
+
+### ⭐ Reto extra 2
+
+Agrega un botón:
+
+```text
+[ Mostrar información ]
+```
+
+y solamente cuando se presione muestra:
+
+```text
+Nombre: Juan
+Email: juan@email.com
+```
+
+Esto te permitirá diferenciar entre:
+
+```text
+estado del input
+```
+
+y:
+
+```text
+estado de la interfaz
+```
+
+---
+
+## 📚 Documentación necesaria
+
+### React
+
+* [useState — React](https://es.react.dev/reference/react/useState)
+* [Responder a eventos — React](https://es.react.dev/learn/responding-to-events)
+* [Estado como una instantánea — React](https://es.react.dev/learn/state-as-a-snapshot)
+* [Renderizado condicional — React](https://es.react.dev/learn/conditional-rendering)
+* [Renderizar listas — React](https://es.react.dev/learn/rendering-lists)
+* [Input — React](https://es.react.dev/reference/react-dom/components/input)
+
+### Eventos
+
+* [Eventos — React](https://es.react.dev/learn/responding-to-events)
+* [KeyboardEvent — MDN](https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent)
+* [Element: focus event — MDN](https://developer.mozilla.org/es/docs/Web/API/Element/focus_event)
+* [Element: blur event — MDN](https://developer.mozilla.org/es/docs/Web/API/Element/blur_event)
+
+---
+
+# 🟡 Medio — Formulario de registro con validación
+
+## 🎯 Meta
+
+Crear un formulario de registro que controle diferentes campos y valide la información antes de mostrar un resultado.
+
+La interfaz puede ser:
+
+```text
+-----------------------------------
+       CREAR CUENTA
+-----------------------------------
+
+Nombre
+[________________________]
+
+Email
+[________________________]
+
+Edad
+[________________________]
+
+Contraseña
+[________________________]
+
+[ Crear cuenta ]
+
+-----------------------------------
+```
+
+Debe reaccionar a diferentes eventos del usuario.
+
+---
+
+## 💡 Pistas para resolverlo
+
+### Pista 1 — Estados
+
+Necesitarás almacenar la información del formulario.
+
+Puedes comenzar investigando:
+
+```jsx
+const [form, setForm] = useState({
+  name: '',
+  email: '',
+  age: '',
+  password: ''
+});
+```
+
+Pero no copies directamente una solución.
+
+Piensa:
+
+> ¿Cómo modificaría solamente `email` sin eliminar los otros valores?
+
+---
+
+### Pista 2 — Spread Operator
+
+Investiga:
+
+```jsx
+setForm(prev => ({
+  ...prev,
+  ...
+}));
+```
+
+La idea es conservar el resto de las propiedades.
+
+---
+
+### Pista 3 — onChange
+
+Puedes utilizar un único handler para varios inputs.
+
+Investiga:
+
+```jsx
+event.target.name
+```
+
+y:
+
+```jsx
+event.target.value
+```
+
+La idea conceptual es:
+
+```text
+input
+ ↓
+name
+ ↓
+value
+ ↓
+estado correspondiente
+```
+
+---
+
+### Pista 4 — onFocus
+
+Cuando el usuario entre en un campo:
+
+```jsx
+onFocus={...}
+```
+
+puedes almacenar:
+
+```text
+campo actualmente enfocado
+```
+
+Por ejemplo:
+
+```jsx
+const [activeField, setActiveField] = useState(null);
+```
+
+---
+
+### Pista 5 — onBlur
+
+Cuando salga:
+
+```jsx
+onBlur={...}
+```
+
+puedes realizar una validación.
+
+Por ejemplo:
+
+```text
+Email
+ ↓
+blur
+ ↓
+validar
+```
+
+No necesitas validar todo mientras escribe.
+
+---
+
+### Pista 6 — onSubmit
+
+El formulario debería utilizar:
+
+```jsx
+<form onSubmit={...}>
+```
+
+Dentro del handler necesitarás investigar:
+
+```jsx
+event.preventDefault();
+```
+
+Pregunta:
+
+> ¿Qué ocurriría si no utilizas `preventDefault()`?
+
+---
+
+### Pista 7 — Estado de errores
+
+Puedes tener un estado similar a:
+
+```jsx
+const [errors, setErrors] = useState({});
+```
+
+Tú debes decidir cómo almacenar errores como:
+
+```text
+name
+email
+age
+password
+```
+
+---
+
+### Pista 8 — Validación
+
+Piensa en reglas como:
+
+```text
+Nombre
+→ obligatorio
+
+Email
+→ obligatorio
+→ debe tener formato válido
+
+Edad
+→ debe ser un número
+
+Contraseña
+→ debe tener cierta longitud
+```
+
+No necesitas utilizar una librería de validación.
+
+El objetivo es practicar React.
+
+---
+
+### Pista 9 — Submit
+
+Cuando todo sea válido, muestra algo como:
+
+```text
+✅ Cuenta creada correctamente
+```
+
+Puedes tener un estado:
+
+```jsx
+const [submitted, setSubmitted] = useState(false);
+```
+
+Pregunta:
+
+> ¿Cuándo debería cambiar a `true`?
+
+---
+
+### Pista 10 — useEffect
+
+Agrega una pequeña funcionalidad:
+
+> Cuando el formulario sea enviado correctamente, modifica el título del documento.
+
+Investiga:
+
+```jsx
+useEffect(() => {
+  document.title = ...;
+}, [...]);
+```
+
+Pregunta:
+
+> ¿Qué estado debería ser una dependencia?
+
+---
+
+### Pista 11 — useRef
+
+Agrega un comportamiento:
+
+> Cuando exista un error en el formulario, el primer campo con error debería recibir focus.
+
+Para eso necesitarás investigar:
+
+```jsx
+const inputRef = useRef(null);
+```
+
+y:
+
+```jsx
+ref={...}
+```
+
+Después:
+
+```jsx
+inputRef.current?.focus();
+```
+
+No implementes todos los refs todavía.
+
+Primero intenta resolver solamente el primer campo.
+
+---
+
+### ⭐ Reto extra
+
+Cuando el usuario presione:
+
+```text
+Escape
+```
+
+limpia los errores actuales.
+
+Investiga:
+
+```jsx
+event.key === 'Escape'
+```
+
+---
+
+### ⭐ Reto extra 2
+
+Agrega un estado:
+
+```text
+Guardando...
+```
+
+cuando se envía el formulario.
+
+Simula una operación asíncrona con:
+
+```jsx
+setTimeout(...)
+```
+
+Después muestra:
+
+```text
+✅ Registro completado
+```
+
+Recuerda investigar cómo limpiar correctamente el timer.
+
+---
+
+### 📚 Documentación necesaria
+
+### Estado
+
+* [useState — React](https://es.react.dev/reference/react/useState)
+* [Actualizar objetos en el estado — React](https://es.react.dev/learn/updating-objects-in-state)
+* [Estado como una instantánea — React](https://es.react.dev/learn/state-as-a-snapshot)
+
+### Eventos
+
+* [Responder a eventos — React](https://es.react.dev/learn/responding-to-events)
+* [Input — React](https://es.react.dev/reference/react-dom/components/input)
+* [Form — React](https://es.react.dev/reference/react-dom/components/form)
+
+### Effects
+
+* [useEffect — React](https://es.react.dev/reference/react/useEffect)
+* [Sincronizar con Effects — React](https://es.react.dev/learn/synchronizing-with-effects)
+* [¿Necesitas un Effect? — React](https://es.react.dev/learn/you-might-not-need-an-effect)
+
+### Refs
+
+* [useRef — React](https://es.react.dev/reference/react/useRef)
+* [Manipular el DOM con refs — React](https://es.react.dev/learn/manipulating-the-dom-with-refs)
+
+### Web APIs
+
+* [setTimeout — MDN](https://developer.mozilla.org/es/docs/Web/API/Window/setTimeout)
+* [clearTimeout — MDN](https://developer.mozilla.org/es/docs/Web/API/Window/clearTimeout)
+* [KeyboardEvent — MDN](https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent)
+
+---
+
+# 🔴 Difícil — Buscador de usuarios con Fake API
+
+## 🎯 Meta
+
+Crear un buscador de usuarios utilizando una **Fake API**.
+
+La aplicación deberá:
+
+1. Obtener usuarios desde una API.
+2. Mostrar un mensaje mientras carga.
+3. Mostrar los usuarios obtenidos.
+4. Permitir buscar usuarios.
+5. Actualizar la búsqueda mediante `onChange`.
+6. Permitir ejecutar la búsqueda con `Enter`.
+7. Permitir limpiar la búsqueda.
+8. Mostrar un mensaje si ocurre un error.
+9. Evitar mostrar resultados antiguos.
+10. Manejar correctamente las peticiones anteriores.
+
+---
+
+# 🌐 Fake API
+
+Puedes utilizar:
+
+[JSONPlaceholder](https://jsonplaceholder.typicode.com/)
+
+Es una API REST falsa diseñada para realizar pruebas y practicar consumo de APIs.
+
+Puedes utilizar:
+
+```text
+https://jsonplaceholder.typicode.com/users
+```
+
+Y para buscar un usuario específico:
+
+```text
+https://jsonplaceholder.typicode.com/users/1
+```
+
+También puedes consultar:
+
+[Documentación oficial de JSONPlaceholder](https://jsonplaceholder.typicode.com/guide/)
+
+---
+
+## 🖥️ Interfaz esperada
+
+Conceptualmente:
+
+```text
+------------------------------------------
+             BUSCADOR DE USUARIOS
+------------------------------------------
+
+Buscar usuario
+
+[________________________] [Buscar]
+
+[ Limpiar ]
+
+------------------------------------------
+
+Cargando usuarios...
+
+------------------------------------------
+
+Juan
+juan@email.com
+Lima
+
+Pedro
+pedro@email.com
+Arequipa
+
+------------------------------------------
+```
+
+Cuando exista un error:
+
+```text
+❌ No se pudieron obtener los usuarios
+```
+
+Cuando no existan resultados:
+
+```text
+No se encontraron usuarios
+```
+
+---
+
+# 💡 Pistas para resolverlo
+
+## Pista 1 — Estado inicial
+
+Necesitas almacenar:
+
+```text
+usuarios
+búsqueda
+loading
+error
+```
+
+Piensa en estructuras como:
+
+```jsx
+const [users, setUsers] = useState(...);
+
+const [search, setSearch] = useState('');
+
+const [loading, setLoading] = useState(...);
+
+const [error, setError] = useState(...);
+```
+
+Tú debes decidir los valores iniciales.
+
+---
+
+## Pista 2 — Primera petición
+
+Cuando la pantalla aparezca necesitas obtener los usuarios.
+
+Investiga:
+
+```jsx
+useEffect(() => {
+  // ...
+}, []);
+```
+
+Pregunta:
+
+> ¿Por qué no quieres hacer el `fetch` directamente dentro del cuerpo del componente?
+
+---
+
+## Pista 3 — fetch
+
+La petición tendrá conceptualmente:
+
+```jsx
+const response = await fetch(
+  'https://jsonplaceholder.typicode.com/users'
+);
+```
+
+Después tendrás que investigar:
+
+```jsx
+const data = await response.json();
+```
+
+Pregunta:
+
+> ¿Qué contiene `response` y qué contiene `data`?
+
+---
+
+## Pista 4 — loading
+
+Antes de comenzar la petición:
+
+```jsx
+setLoading(...)
+```
+
+Cuando termine:
+
+```jsx
+setLoading(...)
+```
+
+Pregunta:
+
+> ¿Qué valor debería tener `loading` mientras `fetch()` está esperando?
+
+---
+
+## Pista 5 — error
+
+Investiga:
+
+```jsx
+try {
+  // ...
+} catch (error) {
+  // ...
+}
+```
+
+Y no olvides investigar:
+
+```jsx
+response.ok
+```
+
+Importante:
+
+> `fetch()` no considera automáticamente todos los códigos HTTP como excepciones.
+
+---
+
+## Pista 6 — Mostrar usuarios
+
+La API devuelve un array.
+
+Necesitarás investigar:
+
+```jsx
+users.map(user => (
+  ...
+))
+```
+
+Puedes comenzar mostrando solamente:
+
+```text
+name
+email
+```
+
+Después puedes agregar:
+
+```text
+phone
+website
+company
+address
+```
+
+---
+
+## Pista 7 — key
+
+Cada elemento debe tener una identidad estable.
+
+Investiga:
+
+```jsx
+key={user.id}
+```
+
+Pregunta:
+
+> ¿Por qué no sería recomendable utilizar el índice del array como `key` en todos los casos?
+
+---
+
+# 🔎 Segunda parte — Buscar usuarios
+
+Ahora viene la parte realmente importante.
+
+Agrega:
+
+```text
+[ Buscar usuario ]
+```
+
+---
+
+## Pista 8 — onChange
+
+El texto del input debe almacenarse:
+
+```jsx
+onChange={(event) => {
+  // ...
+}}
+```
+
+Investiga:
+
+```jsx
+event.target.value
+```
+
+---
+
+## Pista 9 — Búsqueda
+
+No necesitas volver a llamar a la API por cada letra.
+
+Como ya tienes:
+
+```text
+users
+```
+
+puedes investigar cómo utilizar:
+
+```jsx
+users.filter(...)
+```
+
+La idea conceptual:
+
+```text
+usuarios
+   ↓
+filter()
+   ↓
+usuarios que coinciden
+```
+
+---
+
+## Pista 10 — case insensitive
+
+Quieres que:
+
+```text
+juan
+```
+
+y:
+
+```text
+Juan
+```
+
+se consideren iguales.
+
+Investiga:
+
+```jsx
+.toLowerCase()
+```
+
+Puedes pensar en:
+
+```jsx
+user.name.toLowerCase()
+```
+
+y:
+
+```jsx
+search.toLowerCase()
+```
+
+---
+
+## Pista 11 — onSubmit
+
+Haz que el buscador sea un formulario:
+
+```jsx
+<form onSubmit={...}>
+```
+
+Así podrás ejecutar la búsqueda cuando el usuario presione:
+
+```text
+Enter
+```
+
+Investiga:
+
+```jsx
+event.preventDefault();
+```
+
+---
+
+## Pista 12 — botón Buscar
+
+Puedes tener:
+
+```jsx
+<button type="submit">
+  Buscar
+</button>
+```
+
+Esto hará que:
+
+```text
+Click
+   +
+Enter
+```
+
+puedan ejecutar el mismo comportamiento.
+
+---
+
+## Pista 13 — botón Limpiar
+
+Agrega:
+
+```jsx
+<button type="button">
+  Limpiar
+</button>
+```
+
+Este botón debería:
+
+```text
+limpiar búsqueda
++
+mostrar nuevamente usuarios
+```
+
+Tú debes decidir qué estados necesitan cambiar.
+
+---
+
+# ⏳ Tercera parte — Loading
+
+Ahora agrega un estado específico para cuando estés realizando una operación.
+
+Por ejemplo:
+
+```text
+Cargando usuarios...
+```
+
+Puedes investigar el patrón:
+
+```jsx
+if (loading) {
+  return ...;
+}
+```
+
+Pero piensa:
+
+> ¿Quieres ocultar toda la interfaz cuando estás buscando o solamente mostrar un indicador?
+
+---
+
+# 🚨 Cuarta parte — Error
+
+Si la API falla:
+
+```text
+❌ No se pudieron cargar los usuarios
+```
+
+Investiga cómo utilizar:
+
+```jsx
+try {
+  ...
+} catch {
+  ...
+}
+```
+
+También investiga:
+
+```jsx
+response.ok
+```
+
+---
+
+# 🧹 Quinta parte — Cleanup
+
+Ahora agrega cancelación de peticiones.
+
+Investiga:
+
+```jsx
+const controller = new AbortController();
+```
+
+y:
+
+```jsx
+fetch(url, {
+  signal: controller.signal
+});
+```
+
+Después piensa en:
+
+```jsx
+return () => {
+  controller.abort();
+};
+```
+
+Pregunta:
+
+> ¿Qué problema intenta resolver este cleanup?
+
+---
+
+# 🔄 Sexta parte — Evitar resultados obsoletos
+
+Imagina:
+
+```text
+Petición A
+   ↓
+Usuarios
+
+Petición B
+   ↓
+Nueva búsqueda
+```
+
+Si la petición A termina después que B, podría sobrescribir información.
+
+Investiga:
+
+```text
+AbortController
+AbortSignal
+cleanup
+```
+
+Tu objetivo es entender cómo evitar que una petición anterior interfiera con la nueva.
+
+---
+
+# 🧠 Séptima parte — useEffect y dependencias
+
+Si decides realizar una búsqueda automática cuando cambia:
+
+```jsx
+search
+```
+
+debes investigar:
+
+```jsx
+useEffect(() => {
+  // búsqueda
+}, [search]);
+```
+
+Pero antes de implementarlo, piensa:
+
+> ¿Quieres hacer una petición a la API por cada letra?
+
+Si no:
+
+```text
+r
+re
+rea
+reac
+react
+```
+
+investiga:
+
+```text
+debounce
+```
+
+---
+
+# ⏱️ Octava parte — Debounce
+
+Investiga:
+
+```jsx
+setTimeout(...)
+```
+
+y:
+
+```jsx
+clearTimeout(...)
+```
+
+Una estructura conceptual puede ser:
+
+```jsx
+useEffect(() => {
+  const timer = setTimeout(() => {
+    // operación
+  }, 500);
+
+  return () => {
+    clearTimeout(timer);
+  };
+}, [search]);
+```
+
+⚠️ Este fragmento es una **pista**, no la solución.
+
+Debes comprender:
+
+```text
+search cambia
+     ↓
+se crea timer
+     ↓
+usuario vuelve a escribir
+     ↓
+cleanup
+     ↓
+timer anterior se cancela
+     ↓
+nuevo timer
+```
+
+---
+
+# 🧹 Novena parte — Búsqueda vacía
+
+Cuando:
+
+```text
+search === ''
+```
+
+no deberías realizar una búsqueda innecesaria.
+
+Investiga:
+
+```jsx
+if (!search.trim()) {
+  // ...
+}
+```
+
+Puedes decidir que:
+
+```text
+input vacío
+    ↓
+mostrar todos
+```
+
+o:
+
+```text
+input vacío
+    ↓
+limpiar resultados
+```
+
+---
+
+# ⭐ Reto extra 1 — Enter
+
+El usuario debe poder escribir:
+
+```text
+Juan
+```
+
+y presionar:
+
+```text
+Enter
+```
+
+para ejecutar la búsqueda.
+
+Pista:
+
+```jsx
+<form onSubmit={...}>
+```
+
+---
+
+# ⭐ Reto extra 2 — Escape
+
+Si el usuario presiona:
+
+```text
+Escape
+```
+
+debes limpiar la búsqueda.
+
+Investiga:
+
+```jsx
+event.key === 'Escape'
+```
+
+---
+
+# ⭐ Reto extra 3 — Focus automático
+
+Cuando la pantalla aparezca, el input de búsqueda debería recibir focus.
+
+Investiga:
+
+```jsx
+const searchRef = useRef(null);
+```
+
+y:
+
+```jsx
+ref={searchRef}
+```
+
+Después investiga:
+
+```jsx
+searchRef.current?.focus();
+```
+
+Pregunta:
+
+> ¿Por qué este caso utiliza `useRef` y no `useState`?
+
+---
+
+# ⭐ Reto extra 4 — Estados de interfaz
+
+Diferencia entre:
+
+```text
+Cargando...
+```
+
+```text
+No se encontraron resultados
+```
+
+```text
+Usuarios encontrados
+```
+
+```text
+Error al cargar usuarios
+```
+
+Debes pensar en qué combinación de estados representa cada situación.
+
+---
+
+# ⭐ Reto extra 5 — Recargar
+
+Agrega:
+
+```text
+[ Recargar usuarios ]
+```
+
+El botón debe volver a solicitar los usuarios desde:
+
+```text
+https://jsonplaceholder.typicode.com/users
+```
+
+sin recargar el navegador.
+
+Investiga cómo compartir una función de fetching entre:
+
+```text
+useEffect
+```
+
+y:
+
+```text
+onClick
+```
+
+---
+
+# 📚 Documentación necesaria — Ejercicio difícil
+
+### React
+
+* [useState — React](https://es.react.dev/reference/react/useState)
+* [useEffect — React](https://es.react.dev/reference/react/useEffect)
+* [useRef — React](https://es.react.dev/reference/react/useRef)
+* [Responder a eventos — React](https://es.react.dev/learn/responding-to-events)
+* [Sincronizar con Effects — React](https://es.react.dev/learn/synchronizing-with-effects)
+* [Ciclo de vida de los Effects — React](https://es.react.dev/learn/lifecycle-of-reactive-effects)
+* [¿Necesitas un Effect? — React](https://es.react.dev/learn/you-might-not-need-an-effect)
+* [Eliminar dependencias de Effects — React](https://es.react.dev/learn/removing-effect-dependencies)
+* [Renderizar listas — React](https://es.react.dev/learn/rendering-lists)
+* [Renderizado condicional — React](https://es.react.dev/learn/conditional-rendering)
+* [Input — React](https://es.react.dev/reference/react-dom/components/input)
+* [Form — React](https://es.react.dev/reference/react-dom/components/form)
+* [Manipular el DOM con refs — React](https://es.react.dev/learn/manipulating-the-dom-with-refs)
+
+### JavaScript / Web APIs
+
+* [Fetch API — MDN](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
+* [Using Fetch — MDN](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch)
+* [Response.ok — MDN](https://developer.mozilla.org/es/docs/Web/API/Response/ok)
+* [Response.json — MDN](https://developer.mozilla.org/es/docs/Web/API/Response/json)
+* [AbortController — MDN](https://developer.mozilla.org/es/docs/Web/API/AbortController)
+* [AbortSignal — MDN](https://developer.mozilla.org/es/docs/Web/API/AbortSignal)
+* [setTimeout — MDN](https://developer.mozilla.org/es/docs/Web/API/Window/setTimeout)
+* [clearTimeout — MDN](https://developer.mozilla.org/es/docs/Web/API/Window/clearTimeout)
+* [Array.filter — MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+* [Array.map — MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+### Fake API
+
+* [JSONPlaceholder — Fake REST API](https://jsonplaceholder.typicode.com/)
+* [JSONPlaceholder — Guía](https://jsonplaceholder.typicode.com/guide/)
+* [JSONPlaceholder — Usuarios](https://jsonplaceholder.typicode.com/users)
 
 ------------------------------------------------------------------------
 
