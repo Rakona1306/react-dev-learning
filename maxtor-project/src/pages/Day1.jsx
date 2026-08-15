@@ -20,13 +20,13 @@ function MyApp() {
         <p>Nombres:</p>
       </div>
       <ul>
-        {productos.map((producto, index) => (
-          <li key={index}>{producto.nombre}</li>
+        {productos.map((productos, index) => (
+          <li key={index}>{productos.nombre}</li>
         ))}
       </ul>
       <ul>
-        {productos.map((producto, index) => (
-          <li key={index}>{producto.precio * 0.5}</li>
+        {productos.map((productos, index) => (
+          <li key={index}>{productos.precio * 0.5}</li>
         ))}
       </ul>
     </div>
