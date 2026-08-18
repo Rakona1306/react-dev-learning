@@ -3815,255 +3815,582 @@ onClick
 
 ------------------------------------------------------------------------
 
-## Día 5 — 🧩 Hooks avanzados y creación de Custom Hooks
-**`useMemo` · `useCallback` · `useContext` · `useTransition` · `useDeferredValue` · `useImperativeHandle` · Custom Hooks**
+## Día 5 — 🧩 Optimización y Compartir Datos
 
-### 🎯 Qué aprender
+**`useMemo` · `useCallback` · `useContext` · Custom Hooks**
 
--   Cómo acceder directamente a un elemento de la pantalla (por ejemplo,
-    para enfocar un campo de texto).
--   Cómo evitar que tu página recalcule cosas innecesariamente (para que
-    sea más rápida).
--   Cómo compartir información entre muchos componentes sin tener que
-    pasarla de mano en mano.
--   Cómo empaquetar una lógica que se repite en algo reutilizable (una
-    "herramienta" propia).
+---
 
-### 📦 Qué debes entregar hoy
+### 🎯 Qué aprenderás
 
-Una pantalla donde varios componentes comparten información sin que tú
-se la pases manualmente a cada uno, más al menos una herramienta propia
-reutilizable.
+* Cómo optimizar el rendimiento de tu aplicación evitando recálculos pesados de datos y renderizados innecesarios (`useMemo`).
+* Cómo mantener la estabilidad referencial de las funciones para evitar que los componentes hijos optimizados se vuelvan a renderizar sin necesidad (`useCallback`).
+* Cómo compartir estados y datos globales de manera limpia entre componentes sin tener que pasar props de mano en mano (*prop drilling*) utilizando `useContext`.
+* Cómo empaquetar lógica repetitiva con estados y efectos en funciones reutilizables y limpias (*Custom Hooks*).
 
-### 💪 Ejercicios
+---
 
-**Fácil --- Enfocar un campo automáticamente** Meta: que un campo de
-texto quede seleccionado (listo para escribir) apenas se abre la
-pantalla. Pistas para resolverlo:
+### 🔍 Desglose y utilidad de cada Hook
 
-1.  Busca cómo se obtiene una "referencia directa" a un elemento de la
-    pantalla.
-2.  Investiga qué función se usa para "enfocar" ese elemento.
-3.  Ejecuta esa acción apenas la pantalla se abre.
+| Hook / Concepto | Qué problema resuelve | Qué mejora aporta |
+| --- | --- | --- |
+| **`useMemo`** | Cálculos matemáticos o transformaciones de datos pesadas que se ejecutan en cada renderizado, aunque los datos no hayan cambiado. | **Rendimiento:** Memoriza el resultado de una función para que solo se vuelva a calcular si sus dependencias cambian. |
+| **`useCallback`** | Funciones que se recrean en memoria en cada renderizado, provocando que los componentes hijos se vuelvan a renderizar innecesariamente. | **Estabilidad referencial:** Memoriza la definición de una función entre renderizados para evitar ejecuciones y renders en cascada. |
+| **`useContext`** | El paso excesivo de propiedades (*prop drilling*) a través de múltiples niveles de componentes para compartir datos globales (como temas, autenticación o idioma). | **Arquitectura:** Permite acceder a un estado o función global desde cualquier componente descendiente de forma directa y limpia. |
+| **Custom Hooks** | Duplicación de lógica con estados y efectos (`useState`, `useEffect`) repartida y copiada en múltiples componentes de la aplicación. | **Reutilización y Mantenimiento:** Extrae la lógica de negocio o de efectos en funciones independientes, limpiando los componentes visuales. |
 
--   Reto extra: agrega un botón que también enfoque el campo cuando el
-    usuario lo presiona.
+---
 
-**Medio --- Herramienta propia de contador** Meta: empaquetar la lógica
-de un contador (subir, bajar, reiniciar) para poder usarla en dos
-componentes distintos sin repetir código. Pistas para resolverlo:
+### 🔗 Cursos (Deep Dive)
 
-1.  Piensa qué partes del contador se repiten siempre: el valor guardado
-    y las acciones para cambiarlo.
-2.  Junta esas partes en una función reutilizable que cualquier
-    componente pueda usar.
-3.  Usa esa función en dos componentes diferentes y verifica que cada
-    uno tenga su propio conteo.
+* 🎥 **[Curso Avanzado de React: Hooks, Rendimiento y Patrones](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DF0fR-xV4H8o)** — *Duración: 2h 45min (Ideal para dominar `useMemo`, `useCallback` y `useContext` en escenarios reales)*
+* 🎥 **[Masterclass de Custom Hooks en React](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D6ThxsUwLWVc)** — *Duración: 45min (Cómo abstraer lógica reutilizable de forma profesional)*
+* 🎥 **[React Hooks & Custom Hooks Completo](https://www.youtube.com/watch?v=hJ5UEtdS8qE)** — *Tutorial práctico cubriendo desde estados básicos hasta la creación de hooks personalizados.*
+* 🎥 **[TypeScript & React: Tipado avanzado de Custom Hooks](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dv7ofBf42o5c)** — *Duración: 4h 10min (Cómo tipar correctamente contextos y hooks customizados)*
+* 🎥 **[Clean Code & SOLID en Componentes React](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D2591W45BvDk)** — *Aplicación práctica de principios para desacoplar lógica mediante hooks.*
+* 🎥 **[JavaScript Moderno (ES6+): Deep Dive](https://www.youtube.com/watch?v=W6NZfCO5SIk)** — *Análisis de las características modernas del lenguaje para lógica avanzada en Custom Hooks.*
+* 🎥 **[Curso de React: Patrones y Arquitectura](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DF0fR-xV4H8o)** — *Enfoque en escalabilidad y estructura de proyectos basada en contextos.*
+* 🎥 **[Patrones de diseño en React (GeeksforGeeks)](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D0k5Uv61L_4c)** — *Introducción a HOCs, Render Props y abstracción con Context API.*
+* 🎥 **[Optimización de Rendimiento en React (Evita Renders Innecesarios)](https://www.youtube.com/watch?v=x_0DE_l6pgk)** — *Enfoque práctico sobre cuándo usar `useMemo` y `useCallback` sin sobreoptimizar.*
+* 🎥 **[Arquitectura Frontend y Gestión de Estado Global](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DmH2nS81z7-Y)** — *Cómo estructurar estados compartidos y contextos escalables.*
 
--   Reto extra: evita que las funciones de esa herramienta se vuelvan a
-    crear en cada actualización de pantalla (investiga por qué esto
-    importa).
-
-**Difícil --- Modo oscuro / claro** Meta: permitir que el usuario cambie
-entre un tema oscuro y uno claro, y que ese tema se pueda usar en
-cualquier componente sin pasarlo manualmente. Pistas para resolverlo:
-
-1.  Investiga cómo compartir un dato (el tema actual) con toda tu
-    aplicación, sin tener que pasarlo componente por componente.
-2.  Piensa cómo cambiar ese dato cuando el usuario hace clic en un botón
-    de "cambiar tema".
-3.  Usa ese dato compartido en al menos dos componentes distintos para
-    cambiar sus colores.
-
--   Reto extra: evita que los colores se vuelvan a calcular si el tema
-    no cambió.
-
-> En los siguientes ejercicios agrega pistas similares como:
->
-> ``` jsx
-> useState(...)
-> useEffect(()=>{},[])
-> lista.map(...)
-> useContext(...)
-> <Routes />
-> lazy(...)
-> ```
-
-### 🔗 Cursos
-
--   \[ \]
+---
 
 ### ✅ Buenas prácticas
 
--   \[ \]
+* 📄 **[React Hooks Rules & Best Practices](https://es.react.dev/reference/react/hooks)** — *Documentación oficial sobre el uso correcto, restricciones y reglas de los hooks.*
+* 📄 **[Optimización de Renders (useMemo/useCallback)](https://react.dev/reference/react/useMemo)** — *Guía sobre cuándo realmente optimizar y cuándo evitar la sobreoptimización prematura.*
+* 📄 **[Custom Hooks Reusability Guide](https://es.react.dev/learn/reusing-logic-with-custom-hooks)** — *Documentación oficial sobre cómo extraer y estructurar lógica reutilizable.*
+* 📄 **[Patterns.dev: React Design Patterns](https://www.patterns.dev/react/)** — *Patrones de diseño avanzados para el uso correcto de Context y Custom Hooks.*
+* 📄 **[Principios de Clean Code en JavaScript/TypeScript](https://github.com/ryanmcdermott/clean-code-javascript)** — *Buenas prácticas para mantener funciones y hooks limpios y mantenibles.*
+* 📄 **[SOLID Principles: React Context](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)** — *Aplicación de principios de diseño a nivel de arquitectura con Context y Hooks.*
+* 📄 **[Guía de Estilo TypeScript (Airbnb)](https://github.com/airbnb/javascript/tree/master/react)** — *Estándares de código para equipos de alto rendimiento al escribir hooks tipados.*
+* 📄 **[Estructuras de directorios en React](https://www.google.com/search?q=https://react.dev/learn/structure-your-project)** — *Recomendaciones oficiales para organizar archivos y custom hooks.*
+* 📄 **[React Ecosystem Best Practices](https://www.google.com/search?q=https://github.com/goldbergyoni/react-best-practices)** — *Repositorio curado de estándares para gestión de estado y rendimiento.*
+* 📄 **[React Performance Best Practices Guide](https://react.dev/learn/render-and-commit)** — *Buenas prácticas para entender el ciclo de vida y evitar cuellos de botella.*
 
-### 📚 Documentación
+---
 
--   \[ \]
+### 📚 Documentación Técnica
+
+* 📄 **[useMemo - Documentación Oficial](https://es.react.dev/reference/react/useMemo)** — *Referencia oficial para memorizar resultados de cálculos pesados.*
+* 📄 **[useCallback - Documentación Oficial](https://es.react.dev/reference/react/useCallback)** — *Referencia oficial para memorizar definiciones de funciones.*
+* 📄 **[useContext - Documentación Oficial](https://es.react.dev/reference/react/useContext)** — *Referencia oficial para lectura y suscripción a contextos globales.*
+* 📄 **[React Performance Guide (Render and Commit)](https://react.dev/learn/render-and-commit)** — *Entendiendo a fondo el ciclo de renderizado de React y por qué ocurren los re-renders.*
+* 📄 **[TypeScript Generic Patterns for Hooks](https://www.typescriptlang.org/docs/handbook/2/generics.html)** — *Dominio de genéricos aplicados al tipado de Custom Hooks y Contextos.*
+* 📄 **[React Hooks API Overview](https://es.react.dev/reference/react)** — *Documentación detallada de cada hook individual del ecosistema.*
+* 📄 **[TypeScript Documentation (Handbook)](https://www.typescriptlang.org/docs/)** — *Manual oficial y avanzado para tipado estricto en frontend.*
+* 📄 **[MDN Web Docs: JavaScript Closures & Scope](https://developer.mozilla.org/es/docs/Web/JavaScript/Closures)** — *Entendiendo el comportamiento interno de los closures detrás de `useCallback` y Custom Hooks.*
+* 📄 **[React Sharing State Between Components](https://es.react.dev/learn/sharing-state-between-components)** — *Guía oficial sobre cómo elegir entre props, state local y Context API.*
+* 📄 **[React Passing Data Deeply with Context](https://es.react.dev/learn/passing-data-deeply-with-context)** — *Documentación conceptual paso a paso sobre el funcionamiento de Context.*
+
+* 📄 **[React Reference Hooks](https://es.react.dev/reference/react)** — *Documentación detallada de cada hook individual.*
+* 📄 **[TypeScript Documentation](https://www.typescriptlang.org/docs/)** — *Manual oficial y avanzado del lenguaje.*
+* 📄 **[MDN Web Docs: JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)** — *La mejor fuente de verdad para JS puro.*
+* 📄 **[Tailwind CSS Docs](https://tailwindcss.com/docs)** — *Configuración, utilidades y personalización.*
+* 📄 **[React Performance Guide](https://react.dev/learn/render-and-commit)** — *Entendiendo el ciclo de renderizado de React.*
+* 📄 **[TypeScript Generic Patterns](https://www.typescriptlang.org/docs/handbook/2/generics.html)** — *Dominio de genéricos en componentes.*
+* 📄 **[CSS Moderno (Flexbox & Grid)](https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout)** — *Fundamentos de layout.*
+* 📄 **[Atomic Design Pattern Implementation](https://codebrahma.com/atomic-design-react-component-structure-guide/)** — *Guía paso a paso de implementación.*
+* 📄 **[SOLID in React Components](https://lightbulb.mainhub.pt/mastering-s-o-l-i-d-principles-in-react-best-practices-for-beginners-577ace3486e8)** — *Ejemplos concretos de SRP, OCP y LSP.*
+* 📄 **[React Ecosystem Best Practices](https://www.google.com/search?q=https://github.com/goldbergyoni/react-best-practices)** — *Repositorio curado de estándares.*
+
+---
+
+### 📦 Qué debes entregar hoy
+
+Una pantalla donde varios componentes comparten información sin que tú se la pases manualmente a cada uno, más al menos una herramienta propia reutilizable aplicando estrictamente Atomic Design, principios SOLID y nomenclatura en *kebab-case*.
+
+---
+
+### 💪 Ejercicios
+
+---
+
+### **Fácil --- Catálogo Interactivo de Productos con Control Imperativo**
+
+* **Meta:** Desarrollar un buscador de productos utilizando un archivo JSON local estático enriquecido como fuente de datos. La interfaz debe permitir filtrar los elementos en tiempo real aplicando lógica de arrays nativa y limpiar la selección o enfocar el campo de búsqueda de manera imperativa mediante una referencia expuesta.
+* **Estructura de Datos (Mock JSON - Archivo: `products-data.json`):**
+
+```json
+[
+  { "id": 1, "name": "Laptop Pro 16\"", "category": "Tecnología", "price": 1500, "stock": 12 },
+  { "id": 2, "name": "Teclado Mecánico RGB", "category": "Accesorios", "price": 85, "stock": 45 },
+  { "id": 3, "name": "Monitor UltraWide 34\"", "category": "Tecnología", "price": 450, "stock": 8 },
+  { "id": 4, "name": "Mouse Ergonómico Inalámbrico", "category": "Accesorios", "price": 45, "stock": 60 },
+  { "id": 5, "name": "Silla de Escritorio Gamer", "category": "Mobiliario", "price": 280, "stock": 5 },
+  { "id": 6, "name": "Hub USB-C Multipuerto", "category": "Accesorios", "price": 35, "stock": 30 },
+  { "id": 7, "name": "Audífonos Cancelación Ruido", "category": "Tecnología", "price": 200, "stock": 15 },
+  { "id": 8, "name": "Lámpara LED Escritorio", "category": "Mobiliario", "price": 50, "stock": 25 }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio):**
+* `components/atoms/search-input.jsx`
+* `components/atoms/action-button.jsx`
+* `components/molecules/product-card.jsx`
+* `components/organisms/product-catalog-list.jsx`
+* `components/templates/catalog-template.jsx`
+
+
+* **Criterios de Aceptación:**
+1. El archivo JSON debe ser consumido localmente estructurando la información mediante objetos y arrays tipados en JavaScript.
+2. El filtrado de productos debe implementarse obligatoriamente usando `Array.prototype.filter()` combinado con transformaciones de texto (`String.prototype.toLowerCase()` y `String.prototype.includes()`).
+3. El cálculo dinámico del stock total disponible y el costo promedio de los productos filtrados debe realizarse utilizando métodos acumulativos de JavaScript (`Array.prototype.reduce()`).
+4. Las operaciones de filtrado pesado sobre el catálogo deben estar optimizadas y envueltas estrictamente en el hook `useMemo` para evitar recálculos en cada render.
+5. Se debe implementar `useImperativeHandle` y `useRef` para que el componente padre pueda invocar de forma imperativa métodos de limpieza del input y enfoque automático.
+6. **Principio SOLID (SRP):** El componente visual (`product-catalog-list`) no debe contener la lógica de filtrado de datos; esta debe delegarse a funciones puras o contenedores independientes.
+
+
+
+---
+
+### **Medio --- Panel de Control de Inventario con Custom Hooks**
+
+* **Meta:** Construir un sistema de gestión de stock que consuma un JSON local ampliado simulando datos de almacén. Toda la lógica de negocio (filtrado avanzado, ordenamiento dinámico por criterios múltiples y cálculo de métricas de almacén) debe estar completamente abstraída mediante un Custom Hook.
+* **Estructura de Datos (Mock JSON - Archivo: `inventory-data.json`):**
+
+```json
+[
+  { "sku": "SKU-001", "itemName": "Papel Bond A4", "quantity": 300, "unitCost": 5.50, "supplier": "Distribuidora Lima" },
+  { "sku": "SKU-002", "itemName": "Bolígrafo Azul Pack", "quantity": 150, "unitCost": 12.00, "supplier": "Importaciones Sur" },
+  { "sku": "SKU-003", "itemName": "Carpeta Manila", "quantity": 500, "unitCost": 0.80, "supplier": "Papelería Central" },
+  { "sku": "SKU-004", "itemName": "Cuaderno rayado 100h", "quantity": 220, "unitCost": 3.20, "supplier": "Distribuidora Lima" },
+  { "sku": "SKU-005", "itemName": "Calculadora Científica", "quantity": 40, "unitCost": 45.00, "supplier": "Importaciones Sur" },
+  { "sku": "SKU-006", "itemName": "Corrector Líquido", "quantity": 110, "unitCost": 2.50, "supplier": "Papelería Central" },
+  { "sku": "SKU-007", "itemName": "Marcadores Indelebles x4", "quantity": 85, "unitCost": 8.00, "supplier": "Distribuidora Lima" },
+  { "sku": "SKU-008", "itemName": "Archivador de Palanca", "quantity": 90, "unitCost": 6.50, "supplier": "Papelería Central" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio):**
+* `hooks/use-inventory-management.js`
+* `components/atoms/status-badge.jsx`
+* `components/atoms/table-cell.jsx`
+* `components/organisms/inventory-table.jsx`
+* `components/templates/inventory-template.jsx`
+
+
+* **Criterios de Aceptación:**
+1. La lógica de negocio debe estar aislada en un Custom Hook propio llamado `use-inventory-management`, el cual debe gestionar de forma interna los estados de búsqueda, ordenamiento y selección.
+2. El ordenamiento de la tabla debe implementarse mediante `Array.prototype.sort()` aplicando lógica de comparación numérica y alfabética segura (sin mutar el array original, utilizando propagación o copias previas).
+3. Las funciones de manipulación de datos expuestas por el Custom Hook deben estar estabilizadas utilizando `useCallback` para evitar renders innecesarios en cascada al pasarse a los componentes hijos.
+4. Se deben procesar agrupaciones de proveedores utilizando estructuras de datos avanzadas como `Map` o `Set` para extraer listados únicos de proveedores disponibles en el inventario.
+5. **Principio SOLID (OCP - Abierto/Cerrado):** La tabla de inventario (`inventory-table`) debe estructurarse de forma que permita extender nuevas columnas de datos o tipos de celdas mediante composición, sin necesidad de modificar el núcleo del componente.
+
+
+
+---
+
+### **Difícil --- Dashboard Financiero Masivo con Concurrencia de UI**
+
+* **Meta:** Diseñar un dashboard analítico que procese un listado masivo de transacciones desde un archivo JSON local. La aplicación debe administrar estado global mediante `useContext`, optimizando el renderizado concurrente y evitando bloqueos visuales mediante las APIs de concurrencia de React al procesar volúmenes altos de datos.
+* **Estructura de Datos (Mock JSON - Archivo: `transactions-data.json`):**
+
+```json
+[
+  { "transId": "T-9001", "date": "2026-08-01", "amount": 1250.00, "type": "Ingreso", "department": "Ventas" },
+  { "transId": "T-9002", "date": "2026-08-02", "amount": 340.50, "type": "Egreso", "department": "Logística" },
+  { "transId": "T-9003", "date": "2026-08-03", "amount": 890.00, "type": "Ingreso", "department": "Marketing" },
+  { "transId": "T-9004", "date": "2026-08-04", "amount": 4200.00, "type": "Ingreso", "department": "Ventas" },
+  { "transId": "T-9005", "date": "2026-08-05", "amount": 150.00, "type": "Egreso", "department": "Administración" },
+  { "transId": "T-9006", "date": "2026-08-06", "amount": 620.00, "type": "Ingreso", "department": "Marketing" },
+  { "transId": "T-9007", "date": "2026-08-07", "amount": 2100.00, "type": "Egreso", "department": "Logística" },
+  { "transId": "T-9008", "date": "2026-08-08", "amount": 950.00, "type": "Ingreso", "department": "Ventas" },
+  { "transId": "T-9009", "date": "2026-08-09", "amount": 75.00, "type": "Egreso", "department": "Administración" },
+  { "transId": "T-9010", "date": "2026-08-10", "amount": 3100.00, "type": "Ingreso", "department": "Logística" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio):**
+* `context/dashboard-theme-context.jsx`
+* `components/atoms/theme-toggle-button.jsx`
+* `components/molecules/metric-card.jsx`
+* `components/organisms/financial-analytics-grid.jsx`
+* `components/templates/dashboard-template.jsx`
+
+
+* **Criterios de Aceptación:**
+1. Se debe crear un proveedor de contexto global (`dashboard-theme-context`) que gestione el estado del tema visual y filtros activos, consumido mediante `useContext` en al menos dos componentes independientes sin recurrir a *prop drilling*.
+2. La consolidación de métricas financieras por departamento debe realizarse utilizando lógica avanzada de agrupación de JavaScript (`Object.groupBy()` o estructuras `Map`).
+3. Se debe implementar `useTransition` para marcar las actualizaciones masivas de filtros analíticos como transacciones de UI no urgentes, manteniendo la fluidez interactiva del usuario.
+4. Se debe integrar `useDeferredValue` para desvincular la respuesta del input de búsqueda instantánea de la renderización del listado pesado de transacciones financieras.
+5. **Principio SOLID (DIP - Inversión de Dependencias):** Los componentes de presentación (`metric-card`, `financial-analytics-grid`) no deben acoplarse directamente a la lógica de negocio ni a fuentes de datos globales brutas; deben recibir abstracciones desacopladas a través de contratos de contexto e interfaces claras.
 
 ------------------------------------------------------------------------
 
-## Día 6 — 🌐 Componentes, rutas y estado compartido
-**Componentes · `useContext` · `useReducer` · React Router · Custom Hooks**
+## Día 6 — ⚡ Control de Concurrencia, Estado Complejo y Arquitectura Ágil
 
-### 🎯 Qué aprender
+**`useTransition` · `useDeferredValue` · `useImperativeHandle` · `useReducer`**
 
--   Cómo tener varias "pantallas" dentro de una misma aplicación y
-    moverte entre ellas.
--   Cómo crear pantallas que cambian según un dato en la dirección web
-    (por ejemplo, el detalle de un producto según su número).
--   Cómo organizar tus carpetas y archivos a medida que el proyecto
-    crece.
--   Una primera forma de manejar datos que muchas pantallas necesitan
-    compartir (como un carrito de compras).
+---
 
-### 📦 Qué debes entregar hoy
+### 🎯 Qué aprenderás
 
-Una app con al menos 3 pantallas distintas, navegación entre ellas, y
-una pantalla que cambia su contenido según un dato en la dirección web.
+* Cómo gestionar estados complejos, predecibles y escalables basados en múltiples acciones y transiciones utilizando el patrón Reducer (`useReducer`).
+* Cómo mantener la interfaz de usuario fluida y receptiva al procesar actualizaciones masivas de datos mediante la concurrencia de React (`useTransition`).
+* Cómo diferir la actualización de valores no urgentes para priorizar las interacciones del usuario frente a renders pesados (`useDeferredValue`).
+* Cómo controlar elementos hijos de manera imperativa y segura desde componentes padres mediante referencias controladas (`useImperativeHandle` y `useRef`).
+* Cómo estructurar arquitecturas frontend alineadas con metodologías ágiles (Scrum) y principios de diseño para el manejo de flujos de trabajo empresariales.
 
-### 💪 Ejercicios
+---
 
-**Fácil --- Tres pantallas** Meta: crear 3 pantallas (Inicio, Sobre mí,
-Contacto) y un menú para moverte entre ellas. Pistas para resolverlo:
+### 🔍 Desglose y utilidad de cada Hook
 
-1.  Investiga la herramienta que te permite definir varias "pantallas"
-    dentro de una sola aplicación.
-2.  Crea un componente para cada pantalla.
-3.  Arma un menú con enlaces que lleven a cada una.
+| Hook / Concepto | Qué problema resuelve | Qué mejora aporta |
+| --- | --- | --- |
+| **`useReducer`** | Estados locales complejos con múltiples interdependencias, donde `useState` se vuelve difícil de mantener y predecir. | **Mantenibilidad y Predictibilidad:** Centraliza la lógica de transición de estado en funciones puras aplicando el Patrón Reducer. |
+| **`useTransition`** | Bloqueos o congelamientos en la interfaz de usuario al ejecutar tareas pesadas o filtrados masivos en aplicaciones corporativas. | **Experiencia de Usuario (UX):** Marca actualizaciones como no urgentes, permitiendo mantener la UI interactiva (ideal para flujos de Scrum y tableros ágiles). |
+| **`useDeferredValue`** | Pérdida de fluidez al escribir en campos de búsqueda que disparan renderizados masivos de listas de datos en tiempo real. | **Fluidez Interactiva:** Aplaza la actualización de valores derivados costosos para priorizar la respuesta inmediata del input. |
+| **`useImperativeHandle`** | La limitación de React donde el flujo de datos es estrictamente descendiente, requiriendo control imperativo directo sobre un hijo. | **Control Encapsulado:** Personaliza y expone métodos específicos a través de una `ref` de manera segura y limpia. |
 
--   Reto extra: agrega una pantalla especial que se muestre cuando
-    alguien visita una dirección que no existe.
+---
 
-**Medio --- Detalle de producto** Meta: crear una pantalla que muestre
-información distinta según un número en la dirección web (por ejemplo,
-`/producto/3`). Pistas para resolverlo:
+### 🔗 Cursos (Deep Dive)
 
-1.  Investiga cómo una pantalla puede "leer" ese número desde la
-    dirección web.
-2.  Usa ese número para buscar y mostrar el producto correspondiente en
-    una lista que ya tengas.
+* 🎥 **[Curso Avanzado de React: Concurrencia y Performance](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DF0fR-xV4H8o)** — *Duración: 2h 45min (Dominando `useTransition` y `useDeferredValue` en escenarios reales)*
+* 🎥 **[Masterclass de useReducer y Patrones de Estado Avanzados](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D6ThxsUwLWVc)** — *Duración: 45min (Arquitectura de estados complejos y predecibles)*
+* 🎥 **[React Hooks Avanzados: Imperative Handle y Control de Refs](https://www.youtube.com/watch?v=hJ5UEtdS8qE)** — *Tutorial práctico cubriendo control imperativo de componentes.*
+* 🎥 **[TypeScript & React: Tipado Estricto de Reducers y Acciones](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dv7ofBf42o5c)** — *Duración: 4h 10min (Tipado con discriminated unions para reducers)*
+* 🎥 **[Clean Code & SOLID en Arquitectura Frontend](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D2591W45BvDk)** — *Aplicación práctica de principios de diseño para desacoplar lógica compleja.*
+* 🎥 **[JavaScript Moderno: Concurrencia, Event Loop y UI Rendering](https://www.youtube.com/watch?v=W6NZfCO5SIk)** — *Análisis profundo del rendimiento de JavaScript en el navegador.*
+* 🎥 **[Patrones de Diseño en React y Arquitectura Escalable](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D0k5Uv61L_4c)** — *Implementación de patrones de control y estado global/local.*
+* 🎥 **[Optimización de UI Concurrente en React 18+](https://www.youtube.com/watch?v=x_0DE_l6pgk)** — *Enfoque práctico de rendimiento para evitar bloqueos en la interfaz.*
+* 🎥 **[Metodologías Ágiles y Scrum para Equipos de Desarrollo Frontend](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DmH2nS81z7-Y)** — *Organización de tableros, backlogs y componentes escalables.*
+* 🎥 **[Arquitectura de Software Clean Architecture en Aplicaciones Frontend](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dn7uL-8h3l_c)** — *Estructuración de capas de datos y componentes de UI.*
 
--   Reto extra: agrega un botón "volver" que regrese a la pantalla
-    anterior sin usar el botón del navegador.
-
-**Difícil --- Carrito de compras simple** Meta: crear una app con un
-catálogo de productos y un carrito, donde agregar un producto desde el
-catálogo se refleje también en la pantalla del carrito. Pistas para
-resolverlo:
-
-1.  Piensa dónde debería "vivir" la información del carrito para que
-    varias pantallas puedan usarla y modificarla.
-2.  Investiga una forma de compartir esa información sin pasarla
-    manualmente por cada componente.
-3.  Define qué acciones necesita el carrito: agregar, quitar, y ver el
-    total.
-
--   Reto extra: haz que el carrito no se borre si el usuario recarga la
-    página.
-
-> En los siguientes ejercicios agrega pistas similares como:
->
-> ``` jsx
-> useState(...)
-> useEffect(()=>{},[])
-> lista.map(...)
-> useContext(...)
-> <Routes />
-> lazy(...)
-> ```
-
-### 🔗 Cursos
-
--   \[ \]
+---
 
 ### ✅ Buenas prácticas
 
--   \[ \]
+* 📄 **[React Docs: Concurrency & State Management Rules](https://es.react.dev/reference/react/hooks)** — *Documentación oficial sobre el uso correcto de hooks concurrentes y reducers.*
+* 📄 **[Patterns.dev: State Reducer Pattern](https://www.patterns.dev/react/)** — *Patrones de diseño avanzados para la gestión predecible de estados complejos.*
+* 📄 **[Clean Code Architecture: Separación de Lógica en Reducers](https://github.com/ryanmcdermott/clean-code-javascript)** — *Buenas prácticas para mantener funciones reductoras puras y testeables.*
+* 📄 **[Atomic Design: Integración de Componentes con Estado Complejo](https://atomicdesign.bradfrost.com/chapter-2/)** — *Guía para estructurar organismos y templates interactivos.*
+* 📄 **[Guía de Estilo TypeScript (Airbnb) para Actions y Reducers](https://github.com/airbnb/javascript/tree/master/react)** — *Estándares de código para tipado estricto en equipos ágiles.*
+* 📄 **[Scrum Best Practices: Gestión de Estados de Tareas en el Sprint Backlog](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)** — *Alineación de componentes de UI con flujos de trabajo ágiles.*
+* 📄 **[Refactoring UI for Developers: Interacciones fluidas bajo alta carga](https://www.refactoringui.com/)** — *Mejores prácticas de diseño y rendimiento en interfaces concurrentes.*
+* 📄 **[Optimización de Renders Concurrentes en React](https://react.dev/learn/render-and-commit)** — *Guía oficial sobre el comportamiento del ciclo de renderizado concurrente.*
+* 📄 **[SOLID Principles: Single Responsibility en Acciones de Reducer](https://lightbulb.mainhub.pt/mastering-s-o-l-i-d-principles-in-react-best-practices-for-beginners-577ace3486e8)** — *Principio de responsabilidad única aplicado a la gestión de estado.*
+* 📄 **[React Ecosystem Best Practices & Repository Architecture](https://www.google.com/search?q=https://github.com/goldbergyoni/react-best-practices)** — *Estándares corporativos para escalabilidad de proyectos.*
 
-### 📚 Documentación
+---
 
--   \[ \]
+### 📚 Documentación Técnica
+
+* 📄 **[useReducer - Documentación Oficial](https://es.react.dev/reference/react/useReducer)** — *Referencia oficial para gestión de estados complejos con dispatch.*
+* 📄 **[useTransition - Documentación Oficial](https://es.react.dev/reference/react/useTransition)** — *Referencia oficial para marcar actualizaciones de estado como no urgentes.*
+* 📄 **[useDeferredValue - Documentación Oficial](https://es.react.dev/reference/react/useDeferredValue)** — *Referencia oficial para diferir valores no críticos en la UI.*
+* 📄 **[useImperativeHandle - Documentación Oficial](https://es.react.dev/reference/react/useImperativeHandle)** — *Referencia oficial para personalizar instancias expuestas por refs.*
+* 📄 **[React Concurrent Rendering Guide](https://react.dev/blog/2022/03/29/react-v18)** — *Documentación técnica sobre el modo concurrente en React.*
+* 📄 **[TypeScript Discriminated Unions Handbook](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)** — *Patrones avanzados de tipado para payloads de acciones en reducers.*
+* 📄 **[MDN Web Docs: Concurrency Model and Event Loop](https://www.google.com/search?q=https://developer.mozilla.org/es/docs/Web/JavaScript/Event_loop)** — *Fundamentos del motor de JavaScript detrás de la concurrencia.*
+* 📄 **[Atomic Design Pattern Implementation Guide](https://codebrahma.com/atomic-design-react-component-structure-guide/)** — *Estructuración avanzada de carpetas orientada a metodologías ágiles.*
+* 📄 **[SOLID Principles in Component Design Patterns](https://www.typescriptlang.org/docs/)** — *Aplicación de principios de diseño a nivel de arquitectura frontend.*
+* 📄 **[Scrum Guide Official Framework Overview](https://scrumguides.org/)** — *Marco de referencia para la gestión de productos y tableros ágiles.*
+
+---
+
+### 📦 Qué debes entregar hoy
+
+Una pantalla de gestión interactiva donde se aplique control de concurrencia de UI, estado predecible mediante patrones de diseño avanzados y control imperativo de componentes, cumpliendo estrictamente con **Atomic Design**, principios **SOLID** y nomenclatura en **kebab-case** para todos los archivos.
+
+---
+
+### 💪 Ejercicios
+
+---
+
+### **Fácil --- Tablero de Tareas de Sprint con Patrón Reducer**
+
+* **Meta:** Desarrollar un componente de gestión de tareas del Sprint Backlog utilizando un archivo JSON local estático enriquecido. El cambio de estados de las tareas (Pendiente, En Progreso, Completado) debe administrarse estrictamente mediante el hook `useReducer`, aplicando funciones puras y acciones predecibles.
+* **Estructura de Datos (Mock JSON - Archivo: `sprint-tasks-data.json`):**
+
+```json
+[
+  { "taskId": "SPRINT-101", "title": "Diseñar esquema de base de datos", "status": "Completado", "storyPoints": 5, "assignee": "Ana Pérez" },
+  { "taskId": "SPRINT-102", "title": "Configurar autenticación JWT", "status": "En Progreso", "storyPoints": 8, "assignee": "Carlos Gómez" },
+  { "taskId": "SPRINT-103", "title": "Implementar endpoints de usuarios", "status": "Pendiente", "storyPoints": 5, "assignee": "Lucía Torres" },
+  { "taskId": "SPRINT-104", "title": "Maquetar vista de perfil en Tailwind", "status": "Pendiente", "storyPoints": 3, "assignee": "Ana Pérez" },
+  { "taskId": "SPRINT-105", "title": "Escribir pruebas unitarias para servicios", "status": "Pendiente", "storyPoints": 5, "assignee": "Carlos Gómez" },
+  { "taskId": "SPRINT-106", "title": "Optimizar consultas SQL en reportes", "status": "En Progreso", "storyPoints": 8, "assignee": "Lucía Torres" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `reducers/sprint-task-reducer.js`: Este archivo de lógica recibe el estado actual de las tareas y una acción enviada mediante `dispatch`. Su sentido es actuar como una función pura que procesa los cambios de estado (como mover tareas de pendiente a completado) utilizando inmutabilidad estricta de JavaScript, cumpliendo con el patrón Reducer y el Principio de Responsabilidad Única (SRP).
+* `components/atoms/task-status-badge.jsx`: Este átomo recibe el texto descriptivo del estado de la tarea. Su sentido es encapsular la representación visual de la etiqueta, manteniendo la interfaz desacoplada y reutilizable en cualquier parte del tablero ágil.
+* `components/molecules/task-card.jsx`: Esta molécula recibe la información individual de una tarea del JSON y las funciones de despacho de acciones. Su sentido es agrupar el contenido textual, los puntos de historia y el átomo de estado para representar una tarjeta de tarea interactiva.
+* `components/organisms/sprint-board.jsx`: Este organismo recibe el listado completo de tareas gestionadas por el reducer y los disparadores de eventos. Su sentido es estructurar las columnas del tablero aplicando métodos nativos de arrays como `filter()` y estructuras `Map` para calcular métricas dinámicas por columna.
+* `components/templates/sprint-template.jsx`: Este template recibe el organismo del tablero de sprint y la estructura general del layout. Su sentido es unificar la vista completa bajo Atomic Design y Clean Architecture, asegurando una separación limpia entre la lógica de negocio y la presentación visual.
+
+
+* **Criterios de Aceptación:**
+1. El estado del tablero de tareas debe gestionarse obligatoriamente mediante `useReducer`, separando la lógica de las acciones (`dispatch`) del componente visual.
+2. Las funciones del reducer deben ser puras, garantizando inmutabilidad estricta al actualizar el array de tareas (utilizando copias y operadores de propagación).
+3. El filtrado de tareas por estado debe implementarse utilizando métodos nativos como `Array.prototype.filter()` combinado con estructuras `Map` para conteo dinámico.
+4. **Atomic Design:** Estructuración modular estricta desde átomos (`task-status-badge`) hasta templates (`sprint-template`).
+5. **Principio SOLID (SRP):** El componente visual no debe contener la lógica de transición de estados; dicha lógica debe residir enteramente en el archivo reducer.
+
+
+
+---
+
+### **Medio --- Tablero Kanban con Control Imperativo de Edición**
+
+* **Meta:** Construir una vista interactiva de tablero Kanban alimentada por un JSON local de historias de usuario. La aplicación debe permitir que el componente padre invoque de forma imperativa métodos expuestos por los componentes hijos (como enfocar campos de texto o desplegar ediciones rápidas) mediante `useImperativeHandle` y `useRef`.
+* **Estructura de Datos (Mock JSON - Archivo: `kanban-stories-data.json`):**
+
+```json
+[
+  { "storyId": "US-201", "feature": "Pasarela de Pagos", "priority": "Alta", "effort": 13, "status": "Backlog" },
+  { "storyId": "US-202", "feature": "Filtros Avanzados de Búsqueda", "priority": "Media", "effort": 5, "status": "En Análisis" },
+  { "storyId": "US-203", "feature": "Exportación de Reportes PDF", "priority": "Baja", "effort": 3, "status": "Backlog" },
+  { "storyId": "US-204", "feature": "Gestión de Roles y Permisos", "priority": "Alta", "effort": 8, "status": "En Desarrollo" },
+  { "storyId": "US-205", "feature": "Notificaciones Push en tiempo real", "priority": "Media", "effort": 5, "status": "Backlog" },
+  { "storyId": "US-206", "feature": "Optimización de imágenes WebP", "priority": "Baja", "effort": 2, "status": "En Desarrollo" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `components/atoms/editable-input.jsx`: Este átomo recibe valores iniciales de texto y referencias controladas. Su sentido es manejar las interacciones directas del teclado y el foco del cursor cuando el componente superior lo solicite de manera imperativa.
+* `components/molecules/kanban-card.jsx`: Esta molécula recibe la información de la historia de usuario y utiliza `forwardRef` en conjunto con `useImperativeHandle`. Su sentido es exponer métodos personalizados (como activar la edición rápida o enfocar campos internos) hacia el componente padre, resolviendo necesidades complejas fuera del flujo declarativo tradicional.
+* `components/organisms/kanban-column.jsx`: Este organismo recibe las tarjetas agrupadas por estado y las referencias de control. Su sentido es coordinar la distribución de las tarjetas en columnas estructuradas, facilitando la gestión visual del flujo Kanban.
+* `components/templates/kanban-template.jsx`: Este template recibe el organismo de columnas y la estructura base de la vista. Su sentido es consolidar el diseño modular del tablero aplicando Atomic Design y principios de diseño escalable.
+
+
+* **Criterios de Aceptación:**
+1. Se debe implementar `useImperativeHandle` en conjunto con `forwardRef` dentro de un componente hijo de tarjeta para exponer métodos controlados (`focusInput`, `triggerQuickEdit`) hacia el componente padre.
+2. La manipulación y reorganización de elementos entre columnas debe realizarse utilizando métodos nativos de arrays de JavaScript sin mutar el origen de datos.
+3. **Atomic Design:** Separación clara en componentes desde átomos (`editable-input`) hasta organismos de columnas (`kanban-column`).
+4. **Principio SOLID (OCP - Abierto/Cerrado):** Los componentes de tarjeta deben diseñarse mediante composición para permitir la extensión de nuevas funcionalidades (como etiquetas o prioridades) sin modificar el núcleo de la estructura base.
+
+
+
+---
+
+### **Difícil --- Sistema de Filtrado Masivo de Backlog con Concurrencia de UI**
+
+* **Meta:** Desarrollar un buscador y panel analítico avanzado para el Product Backlog completo consumiendo un archivo JSON masivo. La interfaz debe integrar concurrencia de React mediante `useTransition` y `useDeferredValue` para evitar bloqueos visuales al filtrar miles de historias de usuario, combinado con un contexto global de configuración del sprint.
+* **Estructura de Datos (Mock JSON - Archivo: `product-backlog-data.json`):**
+
+```json
+[
+  { "id": "PB-501", "epic": "Core System", "title": "Migración a React 19", "estimate": 21, "status": "Ready", "risk": "Alto" },
+  { "id": "PB-502", "epic": "E-Commerce", "title": "Integración con pasarela Stripe", "estimate": 13, "status": "Refining", "risk": "Medio" },
+  { "id": "PB-503", "epic": "Security", "title": "Auditoría de vulnerabilidades OAuth", "estimate": 8, "status": "Ready", "risk": "Alto" },
+  { "id": "PB-504", "epic": "Analytics", "title": "Dashboard de métricas de conversión", "estimate": 5, "status": "Backlog", "risk": "Bajo" },
+  { "id": "PB-505", "epic": "Core System", "title": "Refactorización de Custom Hooks globales", "estimate": 8, "status": "Ready", "risk": "Medio" },
+  { "id": "PB-506", "epic": "E-Commerce", "title": "Optimización del carrito de compras", "estimate": 5, "status": "Refining", "risk": "Bajo" },
+  { "id": "PB-507", "epic": "Security", "title": "Implementación de Rate Limiting", "estimate": 13, "status": "Backlog", "risk": "Alto" },
+  { "id": "PB-508", "epic": "Analytics", "title": "Reportes automáticos semanales", "estimate": 3, "status": "Backlog", "risk": "Bajo" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `context/scrum-project-context.jsx`: Este contexto global recibe las configuraciones del sprint y los filtros activos corporativos. Su sentido es aplicar Inversión de Dependencias (DIP), proveyendo un canal de comunicación centralizado para evitar el paso manual de propiedades (*prop drilling*) a través de los componentes de la aplicación.
+* `components/atoms/search-bar.jsx`: Este átomo recibe eventos de cambio de texto instantáneos. Su sentido es capturar las entradas del usuario de inmediato, sirviendo como el punto de control de entrada para la búsqueda concurrente.
+* `components/molecules/story-card.jsx`: Esta molécula recibe la información detallada de una historia de usuario. Su sentido es estructurar visualmente los datos de la tarjeta desacoplados del motor de cálculo masivo.
+* `components/organisms/backlog-analytics-grid.jsx`: Este organismo recibe el listado masivo de historias y los valores diferidos (`useDeferredValue`). Su sentido es procesar cálculos pesados y agrupaciones avanzadas (como `Object.groupBy()` o estructuras `Map`) de forma asíncrona mediante `useTransition`, manteniendo la interfaz fluida y sin bloqueos de render.
+* `components/templates/backlog-template.jsx`: Este template recibe el organismo analítico y el proveedor de contexto. Su sentido es consolidar la vista completa bajo Clean Architecture y Atomic Design, asegurando una separación total entre la lógica global y la presentación visual.
+
+
+* **Criterios de Aceptación:**
+1. Se debe implementar un proveedor de contexto global (`scrum-project-context`) consumido mediante `useContext` para gestionar parámetros de filtrado y métricas del sprint en múltiples componentes sin *prop drilling*.
+2. Se debe utilizar `useTransition` para marcar las actualizaciones masivas de filtros analíticos como transacciones de UI no urgentes, manteniendo la fluidez interactiva.
+3. Se debe integrar `useDeferredValue` para desvincular la respuesta del input de búsqueda instantánea de la renderización del listado pesado de historias de usuario.
+4. La consolidación de estimaciones por épica y nivel de riesgo debe realizarse utilizando lógica avanzada de agrupación de JavaScript (`Object.groupBy()` o estructuras `Map`).
+5. **Principio SOLID (DIP - Inversión de Dependencias):** Los componentes de presentación (`story-card`, `backlog-analytics-grid`) no deben acoplarse directamente a fuentes de datos brutas, recibiendo abstracciones desacopladas a través de contratos de contexto.
 
 ------------------------------------------------------------------------
 
-## Día 7 — 🚀 Proyecto final: integrar Hooks, componentes y publicar
+## Día 7 — ⚛️ Arquitectura de Componentes, Patrones de Diseño, Optimización Extrema y Testing
 
-### 🎯 Qué aprender
+**`lazy` · `Suspense` · `memo` · Componentes de Alto Rendimiento · Patrones de Diseño · Clean Architecture · Testing**
 
--   Cómo juntar todo lo aprendido en un solo proyecto pequeño pero
-    completo.
--   Cómo hacer que tu página cargue partes solo cuando se necesitan,
-    para que sea más rápida.
--   Cómo preparar tu proyecto para subirlo a internet y que cualquiera
-    pueda verlo.
+---
 
-### 📦 Qué debes entregar hoy
+### 🎯 Qué aprenderás
 
-Un proyecto pequeño pero funcional, publicado en internet con un enlace
-que puedas compartir.
+* Cómo optimizar el rendimiento y la carga inicial de aplicaciones corporativas a gran escala utilizando componentes de carga perezosa (`lazy` y `Suspense`).
+* Cómo prevenir renders innecesarios en componentes puros a nivel de renderizado utilizando la API de memorización de componentes (`memo`).
+* Cómo aplicar patrones de diseño avanzados en React (como *Compound Components*, *Render Props* y *Custom Hooks* desacoplados) para crear arquitecturas altamente escalables y mantenibles.
+* Cómo estructurar proyectos complejos bajo una **Arquitectura de Software Limpia** (*Clean Architecture* y *Atomic Design*), separando estrictamente la lógica de negocio, las capas de datos y los componentes visuales.
+* Cómo aplicar los principios **SOLID** y buenas prácticas de **Clean Code** en JavaScript moderno y TypeScript, asegurando la mantenibilidad a lo largo del ciclo de vida del desarrollo.
+* Cómo implementar pruebas unitarias y de integración robustas utilizando herramientas nativas del ecosistema moderno para validar el comportamiento de componentes y hooks.
 
-### 💪 Ejercicios
+---
 
-**Fácil --- Lista desde internet** Meta: crear una app que muestre una
-lista de elementos (películas, libros, lo que prefieras) traída desde
-una página de prueba. Pistas para resolverlo:
+### 🔍 Desglose y Utilidad de Conceptos (Día 7)
 
-1.  Reutiliza lo aprendido sobre pedir datos a internet y mostrarlos.
-2.  Agrega un campo de búsqueda que filtre lo que ya está en pantalla
-    (sin pedir datos nuevos).
+| Concepto / API de React | Qué problema resuelve | Qué mejora aporta |
+| --- | --- | --- |
+| **`lazy` & `Suspense**` | Tiempos de carga inicial lentos debido a paquetes JavaScript gigantes y monolíticos descargados de golpe en el navegador. | **Rendimiento de Carga:** Divide el código en fragmentos (*code-splitting*) descargando componentes solo bajo demanda con estados de carga controlados. |
+| **`memo`** | Renderizados en cascada innecesarios cuando un componente padre se actualiza, pero las propiedades de los hijos no han cambiado. | **Optimización de Render:** Memoriza el resultado del renderizado del componente basado en la comparación superficial o profunda de props. |
+| **Patrones de Diseño** | Acoplamiento excesivo y falta de flexibilidad al reutilizar componentes visuales complejos entre diferentes módulos de negocio. | **Arquitectura Escalable:** Proporciona contratos de diseño predecibles (`Compound Components`, `Provider Pattern`) para desacoplar responsabilidades. |
+| **Clean Architecture** | Mezcla caótica de lógica de negocio, llamadas a datos y diseño visual dentro de un mismo componente (*Spaghetti Code*). | **Mantenibilidad:** Aislar la lógica en capas independientes (presentación, dominio y datos), facilitando la refactorización y el mantenimiento a largo plazo. |
 
--   Reto extra: ordena la lista alfabéticamente o por otro criterio que
-    elijas.
+---
 
-**Medio --- Agregar elementos nuevos** Meta: agregar un formulario que
-permita crear un nuevo elemento y que aparezca en la lista sin recargar
-la página. Pistas para resolverlo:
+### 🔗 Cursos (Deep Dive)
 
-1.  Piensa cómo enviar los datos del formulario a la página de prueba.
-2.  Una vez enviado, piensa cómo agregar ese nuevo elemento a la lista
-    que ya tienes en pantalla.
+* 🎥 **[Curso Avanzado de React: Arquitectura, Patrones y Rendimiento Extremo](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DF0fR-xV4H8o)** — *Duración: 2h 45min (Dominando `lazy`, `Suspense`, `memo` y patrones de diseño en producción)*
+* 🎥 **[Masterclass de Clean Architecture y Patrones de Diseño en Frontend](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D6ThxsUwLWVc)** — *Duración: 45min (Estructuración de proyectos escalables)*
+* 🎥 **[React Design Patterns & Compound Components Workshop](https://www.youtube.com/watch?v=hJ5UEtdS8qE)** — *Tutorial práctico cubriendo patrones avanzados de componentes reutilizables.*
+* 🎥 **[TypeScript & React: Tipado Avanzado de Componentes y Patrones](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dv7ofBf42o5c)** — *Duración: 4h 10min (Tipado estricto para arquitecturas complejas)*
+* 🎥 **[Clean Code & SOLID Principles en Ecosistemas React](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D2591W45BvDk)** — *Aplicación práctica de principios para desacoplar componentes y servicios.*
+* 🎥 **[JavaScript Moderno (ES6+): Closures, Prototipos y Motor de Renderizado](https://www.youtube.com/watch?v=W6NZfCO5SIk)** — *Análisis profundo de JavaScript para optimizar la ejecución del DOM.*
+* 🎥 **[Arquitectura Frontend con Atomic Design y Domain-Driven Design](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3Dn7uL-8h3l_c)** — *Cómo organizar componentes y carpetas a gran escala empresarial.*
+* 🎥 **[Optimización Extrema y Code Splitting en React 18+](https://www.youtube.com/watch?v=x_0DE_l6pgk)** — *Enfoque práctico de rendimiento para evitar bloqueos de render.*
+* 🎥 **[Testing en React: Vitest y React Testing Library desde Cero](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DmH2nS81z7-Y)** — *Cómo probar componentes, hooks y flujos de usuario complejos.*
+* 🎥 **[Metodologías Ágiles y Refactorización Continua en Equipos de Software](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3D0k5Uv61L_4c)** — *Estrategias de desarrollo iterativo y calidad de código.*
 
--   Reto extra: haz que el formulario se muestre solo cuando el usuario
-    hace clic en "Agregar", y que no cargue hasta ese momento.
-
-**Difícil --- Proyecto completo y publicado** Meta: completar las
-acciones de crear, ver, editar y eliminar elementos, y subir tu proyecto
-a internet. Pistas para resolverlo:
-
-1.  Revisa qué acciones te faltan (¿ya puedes editar y eliminar, o solo
-    crear y ver?).
-2.  Investiga cómo se prepara un proyecto para "producción" antes de
-    publicarlo.
-3.  Busca una plataforma gratuita para subir proyectos como el tuyo y
-    sigue sus pasos.
-
--   Reto extra: divide tu proyecto en partes que carguen solo cuando el
-    usuario visita esa pantalla, y compara el tamaño del proyecto antes
-    y después.
-
-> En los siguientes ejercicios agrega pistas similares como:
->
-> ``` jsx
-> useState(...)
-> useEffect(()=>{},[])
-> lista.map(...)
-> useContext(...)
-> <Routes />
-> lazy(...)
-> ```
-
-### 🔗 Cursos
-
--   \[ \]
+---
 
 ### ✅ Buenas prácticas
 
--   \[ \]
+* 📄 **[React Docs: Code-Splitting and Suspense Best Practices](https://es.react.dev/reference/react/lazy)** — *Documentación oficial sobre el uso correcto de carga perezosa.*
+* 📄 **[Patterns.dev: React Design Patterns & Compound Components](https://www.patterns.dev/react/)** — *La biblia de los patrones de diseño modernos aplicados al desarrollo frontend.*
+* 📄 **[Clean Code JavaScript / TypeScript Standards](https://github.com/ryanmcdermott/clean-code-javascript)** — *Buenas prácticas para escribir código limpio, legible y mantenible.*
+* 📄 **[Atomic Design Methodology: Estructura de Componentes Escalables](https://atomicdesign.bradfrost.com/chapter-2/)** — *Guía de Brad Frost para organizar átomos, moléculas, organismos y templates.*
+* 📄 **[SOLID Principles in Component Design Architecture](https://lightbulb.mainhub.pt/mastering-s-o-l-i-d-principles-in-react-best-practices-for-beginners-577ace3486e8)** — *Principio de responsabilidad única y abierto/cerrado en componentes.*
+* 📄 **[Guía de Estilo TypeScript (Airbnb Standards)](https://github.com/airbnb/javascript/tree/master/react)** — *Estándares corporativos para tipado estricto y convenciones de nomenclatura en kebab-case.*
+* 📄 **[Refactoring UI: Integración de Rendimiento y Diseño Visual](https://www.refactoringui.com/)** — *Mejores prácticas para mantener una interfaz rápida y visualmente coherente.*
+* 📄 **[React Performance Guide: Render, Commit and Memoization](https://react.dev/learn/render-and-commit)** — *Guía oficial sobre cómo y cuándo utilizar la API `memo` sin caer en sobreoptimización.*
+* 📄 **[Testing Library Guiding Principles](https://testing-library.com/docs/react-testing-library/intro/)** — *Buenas prácticas para escribir pruebas centradas en el comportamiento del usuario.*
+* 📄 **[React Ecosystem Best Practices & Repository Structure](https://www.google.com/search?q=https://github.com/goldbergyoni/react-best-practices)** — *Repositorio curado de estándares corporativos para arquitectura de software.*
 
-### 📚 Documentación
+---
 
--   \[ \]
+### 📚 Documentación Técnica
+
+* 📄 **[React lazy - Documentación Oficial](https://es.react.dev/reference/react/lazy)** — *Referencia oficial para importación dinámica de componentes.*
+* 📄 **[React Suspense - Documentación Oficial](https://es.react.dev/reference/react/Suspense)** — *Referencia oficial para mostrar estados de carga provisionales.*
+* 📄 **[React memo - Documentación Oficial](https://es.react.dev/reference/react/memo)** — *Referencia oficial para evitar re-renders omitiendo memorización de componentes.*
+* 📄 **[React Performance Reference Guide](https://react.dev/learn/render-and-commit)** — *Documentación técnica sobre el ciclo de vida y optimización de renderizado.*
+* 📄 **[TypeScript Handbook: Generics & Advanced Component Types](https://www.typescriptlang.org/docs/)** — *Manual oficial avanzado para tipado de componentes complejos.*
+* 📄 **[MDN Web Docs: JavaScript Modules & Dynamic Imports](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Modules)** — *Fundamentos nativos del navegador para carga asíncrona de código.*
+* 📄 **[Vitest Documentation & Testing Framework Guide](https://vitest.dev/guide/)** — *Referencia oficial para configuración y ejecución de pruebas de alto rendimiento.*
+* 📄 **[Atomic Design Implementation Guide](https://codebrahma.com/atomic-design-react-component-structure-guide/)** — *Estructuración avanzada de carpetas orientada a metodologías ágiles.*
+* 📄 **[SOLID Principles Core Concepts (Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)** — *Fundamentos de arquitectura de software orientada a objetos y componentes.*
+* 📄 **[Scrum Guide Official Framework Overview](https://scrumguides.org/)** — *Marco de referencia ágil para la gestión de entregas incrementales en sprints.*
+
+---
+
+### 📦 Qué debes entregar hoy
+
+Una aplicación optimizada bajo arquitecturas escalables, implementando carga perezosa de vistas, componentes memorizados de alto rendimiento, patrones de diseño profesionales y pruebas unitarias, cumpliendo estrictamente con **Atomic Design**, principios **SOLID** y nomenclatura en **kebab-case** para todos los archivos.
+
+---
+
+### 💪 Ejercicios
+
+---
+
+### **Fácil --- Portal de Módulos con Carga Perezosa (`lazy` y `Suspense`)**
+
+* **Meta:** Desarrollar un sistema de navegación que cargue diferentes paneles analíticos y operativos bajo demanda utilizando importaciones dinámicas con `lazy` y `Suspense`, desacoplando los componentes para optimizar el rendimiento inicial del paquete principal (*code-splitting*).
+* **Estructura de Datos (Mock JSON - Archivo: `modules-registry-data.json`):**
+
+```json
+[
+  { "moduleId": "MOD-01", "name": "Panel de Ventas", "route": "sales-panel", "status": "Activo", "bundleSize": "120KB" },
+  { "moduleId": "MOD-02", "name": "Control de Inventario", "route": "inventory-panel", "status": "Activo", "bundleSize": "145KB" },
+  { "moduleId": "MOD-03", "name": "Analíticas Financieras", "route": "finance-panel", "status": "En Mantenimiento", "bundleSize": "210KB" },
+  { "moduleId": "MOD-04", "name": "Gestión de Personal", "route": "hr-panel", "status": "Activo", "bundleSize": "95KB" },
+  { "moduleId": "MOD-05", "name": "Reportes de Rendimiento", "route": "reports-panel", "status": "Activo", "bundleSize": "180KB" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `components/atoms/loading-spinner.jsx`: Este átomo recibe únicamente una propiedad visual (como un texto o indicador estético) para mostrar un estado de espera estandarizado. Su sentido es actuar como el componente de respaldo (fallback) controlado por el sistema de concurrencia mientras los módulos pesados se descargan de forma asíncrona.
+* `components/molecules/module-card.jsx`: Esta molécula recibe la información individual de cada registro del archivo JSON y una función de selección de ruta. Su sentido es representar visualmente los datos del módulo y permitir al usuario interactuar para disparar la navegación y la carga perezosa correspondiente.
+* `components/organisms/lazy-module-loader.jsx`: Este organismo recibe el listado completo de módulos y el identificador de la ruta activa. Su sentido es orquestar la lógica de importación dinámica combinando la API `lazy` de React y envolviendo el resultado dentro de un componente `Suspense` que utiliza el `loading-spinner` anterior, evitando que el paquete principal colapse en la carga inicial.
+* `components/templates/portal-template.jsx`: Este template recibe la estructura general del layout de la aplicación y el organismo cargador. Su sentido es proveer el contenedor visual maestro donde se distribuyen los elementos de navegación y las vistas dinámicas, cumpliendo con Atomic Design y Clean Architecture.
+
+
+* **Criterios de Aceptación:**
+1. Los módulos funcionales deben importarse de forma dinámica utilizando la API `lazy` de React y envolverse en componentes `Suspense` con un indicador de carga visual (`loading-spinner`).
+2. El consumo del archivo JSON local debe estructurarse mediante objetos tipados y métodos nativos de búsqueda de JavaScript.
+3. **Atomic Design:** Estructuración modular estricta desde átomos (`loading-spinner`) hasta templates (`portal-template`).
+4. **Principio SOLID (SRP):** La lógica de ruteo y carga asíncrona debe estar separada de la representación visual de las tarjetas de módulos.
+
+
+
+---
+
+### **Medio --- Panel de Métricas Masivas con Componentes Memorizados (`memo`)**
+
+* **Meta:** Construir una vista analítica que procese un listado masivo de indicadores de rendimiento desde un JSON local. La aplicación debe evitar re-renders en cascada utilizando la API `memo` en los componentes hijos y aplicando funciones de ordenamiento y filtrado altamente optimizadas mediante métodos de arrays de JavaScript.
+* **Estructura de Datos (Mock JSON - Archivo: `performance-metrics-data.json`):**
+
+```json
+[
+  { "metricId": "MET-101", "department": "Ventas", "kpi": "Conversión Leads", "score": 88.5, "target": 80.0 },
+  { "metricId": "MET-102", "department": "Logística", "kpi": "Tiempo de Entrega", "score": 94.2, "target": 90.0 },
+  { "metricId": "MET-103", "department": "Soporte", "kpi": "Satisfacción Cliente", "score": 79.8, "target": 85.0 },
+  { "metricId": "MET-104", "department": "Marketing", "kpi": "Retorno de Inversión", "score": 91.0, "target": 88.0 },
+  { "metricId": "MET-105", "department": "Desarrollo", "kpi": "Velocidad de Sprint", "score": 96.5, "target": 90.0 },
+  { "metricId": "MET-106", "department": "Ventas", "kpi": "Ticket Promedio", "score": 82.1, "target": 85.0 }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `components/atoms/metric-badge.jsx`: Este átomo recibe el valor numérico y el objetivo de cumplimiento de un indicador. Su sentido es calcular lógicamente si la métrica es exitosa o deficiente utilizando operadores nativos y renderizar una etiqueta visual estilizada y desacoplada de la tabla.
+* `components/molecules/metric-row-item.jsx`: Esta molécula recibe la información individual de una fila de métrica y el átomo de etiqueta. Su sentido es estructurar una fila de datos optimizada y envuelta estrictamente en la API `memo` de React, garantizando que solo se vuelva a renderizar si sus propiedades específicas cambian, evitando bloqueos cuando la tabla principal se actualiza.
+* `components/organisms/metrics-table-grid.jsx`: Este organismo recibe el listado masivo de datos filtrados y las funciones de ordenamiento. Su sentido es coordinar la renderización de la tabla aplicando métodos nativos de transformación de arrays (como `filter` y `reduce`), manteniendo un alto rendimiento al manejar colecciones grandes de datos.
+* `components/templates/metrics-template.jsx`: Este template recibe el organismo de la tabla de métricas y los controles globales de filtrado. Su sentido es unificar la vista analítica completa bajo los lineamientos de Atomic Design y Clean Architecture, separando la presentación visual de la lógica de procesamiento.
+
+
+* **Criterios de Aceptación:**
+1. Los componentes hijos de filas y tarjetas deben estar envueltos estrictamente en la API `memo` para prevenir renderizados innecesarios cuando el estado del componente padre cambie pero sus props se mantengan estables.
+2. Las transformaciones de datos y cálculos estadísticos (como promedios globales y filtrado por departamentos) deben realizarse utilizando encadenamiento seguro de métodos nativos (`Array.prototype.filter()`, `Array.prototype.reduce()`).
+3. **Atomic Design:** Separación clara en componentes desde átomos (`metric-badge`) hasta organismos de tablas (`metrics-table-grid`).
+4. **Principio SOLID (OCP - Abierto/Cerrado):** La estructura de la tabla debe permitir la extensión de nuevas métricas mediante composición sin alterar el componente base memorizado.
+
+
+
+---
+
+### **Difícil --- Sistema Enterprise con Patrones de Diseño y Arquitectura Limpia**
+
+* **Meta:** Diseñar una plataforma empresarial modular que integre gestión de proyectos y control de calidad consumiendo un archivo JSON masivo. La aplicación debe estructurarse bajo Clean Architecture y Atomic Design, aplicando patrones de diseño avanzados (como *Compound Components*), principios SOLID y flujos concurrentes de React.
+* **Estructura de Datos (Mock JSON - Archivo: `enterprise-projects-data.json`):**
+
+```json
+[
+  { "projectId": "PRJ-901", "name": "Core Banking Modernization", "client": "Banco del Sur", "budget": 150000, "status": "En Desarrollo", "priority": "Alta" },
+  { "projectId": "PRJ-902", "name": "E-Commerce Omnicanal", "client": "Retail Global", "budget": 85000, "status": "Planificación", "priority": "Media" },
+  { "projectId": "PRJ-903", "name": "Plataforma de Telemedicina", "client": "Salud Integral", "budget": 120000, "status": "En Desarrollo", "priority": "Alta" },
+  { "projectId": "PRJ-904", "name": "Automatización Logística IA", "client": "Transportes Andinos", "budget": 95000, "status": "Revisión", "priority": "Baja" },
+  { "projectId": "PRJ-905", "name": "Portal de Autogestión Ciudadana", "client": "Gobierno Digital", "budget": 200000, "status": "Planificación", "priority": "Alta" },
+  { "projectId": "PRJ-906", "name": "Sistema de Facturación Electrónica", "client": "Comercio Express", "budget": 45000, "status": "En Desarrollo", "priority": "Media" }
+]
+
+```
+
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `context/enterprise-auth-context.jsx`: Este contexto global recibe las preferencias de sesión y los filtros corporativos globales. Su sentido es proveer un canal de comunicación centralizado y desacoplado (aplicando Inversión de Dependencias - DIP), permitiendo que cualquier componente hijo consuma datos sin recurrir a prop drilling.
+* `components/atoms/status-indicator.jsx`: Este átomo recibe el texto descriptivo de estado de un proyecto. Su sentido es encapsular la lógica de representación visual del estado corporativo mediante un diseño limpio y reutilizable en múltiples pantallas.
+* `components/molecules/project-card.jsx`: Esta molécula utiliza el patrón de diseño *Compound Components* para estructurar una tarjeta flexible. Recibe subcomponentes y props de control, permitiendo organizar la información del proyecto sin acoplar la presentación al contenedor principal.
+* `components/organisms/enterprise-dashboard-grid.jsx`: Este organismo recibe el listado de proyectos y los valores diferidos de búsqueda (`useDeferredValue`). Su sentido es procesar agrupaciones avanzadas con estructuras como `Map` o `Object.groupBy()` y mantener la concurrencia fluida mediante `useTransition`.
+* `components/templates/enterprise-template.jsx`: Este template recibe el organismo del dashboard y la estructura general de la aplicación. Su sentido es consolidar la vista bajo Clean Architecture, asegurando que la interfaz cumpla con Atomic Design y desacople totalmente la lógica de negocio de la presentación.
+
+
+* **Criterios de Aceptación:**
+1. La arquitectura del código debe seguir estrictamente los principios de **Clean Architecture**, aislando la capa de servicios de datos, la lógica de contexto global y los componentes visuales de presentación.
+2. Se debe implementar un patrón de diseño avanzado (como *Compound Components* o *Render Props*) para estructurar los contenedores de tarjetas de proyectos de forma flexible y reutilizable.
+3. Se debe integrar concurrencia de React (`useTransition` y `useDeferredValue`) para gestionar filtros y búsquedas masivas de proyectos sin bloquear la interfaz gráfica.
+4. La consolidación y agrupación de presupuestos por prioridad y estado de proyecto debe realizarse mediante funciones de agregación avanzadas de JavaScript (`Object.groupBy()` o estructuras `Map`).
+5. **Principio SOLID (DIP - Inversión de Dependencias):** Los componentes de presentación (`project-card`, `enterprise-dashboard-grid`) no deben acoplarse directamente a fuentes de datos brutas, recibiendo abstracciones desacopladas a través de contratos de contexto e interfaces claras.
 
 ------------------------------------------------------------------------
 
