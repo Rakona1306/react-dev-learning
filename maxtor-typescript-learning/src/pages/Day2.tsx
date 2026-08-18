@@ -1,7 +1,7 @@
+import Imagen from "../components/atoms/imagen/imagen";
+import Texto from "../components/atoms/text-only-for-day1/Texto";
 
 
-import Imagen from "../components/Imagen";
-import Texto from "../components/Texto";
 
 export default function Day2() {
   const products = [

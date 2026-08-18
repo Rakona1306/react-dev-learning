@@ -1,0 +1,11 @@
+.Button {
+  color: rgb(196, 182, 182);
+  width: min-content;
+  background-color: rgb(41, 34, 34);
+  padding: 10px;
+  border-radius: 5%;
+  display: flex;
+   position: relative;
+  left: 20px;
+  top: 10px;
+}

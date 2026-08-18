@@ -1,0 +1,11 @@
+.Box {
+  color: rgb(196, 182, 182);
+  background-color: rgb(41, 34, 34);
+  padding: 10px;
+  border-radius: 5%;
+  display:inline-block;
+   /* position: relative;
+  left: 50px; /* derecha 
+  top: 40px; 
+   */
+}
