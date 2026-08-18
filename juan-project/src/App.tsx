@@ -6,7 +6,7 @@ import Day1 from './pages/day1'
 function App() {
 
   return (
-    <div className='h-screen w-full bg-gray-900 text-white'>
+    <div className='min-h-screen w-full bg-gray-900 text-white'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Day1 />} />
