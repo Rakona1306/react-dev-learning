@@ -3884,22 +3884,11 @@ onClick
 * 📄 **[React Sharing State Between Components](https://es.react.dev/learn/sharing-state-between-components)** — *Guía oficial sobre cómo elegir entre props, state local y Context API.*
 * 📄 **[React Passing Data Deeply with Context](https://es.react.dev/learn/passing-data-deeply-with-context)** — *Documentación conceptual paso a paso sobre el funcionamiento de Context.*
 
-* 📄 **[React Reference Hooks](https://es.react.dev/reference/react)** — *Documentación detallada de cada hook individual.*
-* 📄 **[TypeScript Documentation](https://www.typescriptlang.org/docs/)** — *Manual oficial y avanzado del lenguaje.*
-* 📄 **[MDN Web Docs: JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)** — *La mejor fuente de verdad para JS puro.*
-* 📄 **[Tailwind CSS Docs](https://tailwindcss.com/docs)** — *Configuración, utilidades y personalización.*
-* 📄 **[React Performance Guide](https://react.dev/learn/render-and-commit)** — *Entendiendo el ciclo de renderizado de React.*
-* 📄 **[TypeScript Generic Patterns](https://www.typescriptlang.org/docs/handbook/2/generics.html)** — *Dominio de genéricos en componentes.*
-* 📄 **[CSS Moderno (Flexbox & Grid)](https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout)** — *Fundamentos de layout.*
-* 📄 **[Atomic Design Pattern Implementation](https://codebrahma.com/atomic-design-react-component-structure-guide/)** — *Guía paso a paso de implementación.*
-* 📄 **[SOLID in React Components](https://lightbulb.mainhub.pt/mastering-s-o-l-i-d-principles-in-react-best-practices-for-beginners-577ace3486e8)** — *Ejemplos concretos de SRP, OCP y LSP.*
-* 📄 **[React Ecosystem Best Practices](https://www.google.com/search?q=https://github.com/goldbergyoni/react-best-practices)** — *Repositorio curado de estándares.*
-
 ---
 
 ### 📦 Qué debes entregar hoy
 
-Una pantalla donde varios componentes comparten información sin que tú se la pases manualmente a cada uno, más al menos una herramienta propia reutilizable aplicando estrictamente Atomic Design, principios SOLID y nomenclatura en *kebab-case*.
+Una pantalla donde varios componentes comparten información sin que tú se la pases manualmente a cada uno, más al menos una herramienta propia reutilizable aplicando estrictamente Atomic Design, principios SOLID y nomenclatura en **kebab-case**.
 
 ---
 
@@ -3926,12 +3915,12 @@ Una pantalla donde varios componentes comparten información sin que tú se la p
 
 ```
 
-* **Estructura de Archivos (Kebab-case obligatorio):**
-* `components/atoms/search-input.jsx`
-* `components/atoms/action-button.jsx`
-* `components/molecules/product-card.jsx`
-* `components/organisms/product-catalog-list.jsx`
-* `components/templates/catalog-template.jsx`
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `components/atoms/search-input.jsx`: Este átomo recibe propiedades de texto y referencias controladas. Su sentido es capturar las entradas del usuario de inmediato y permitir el enfoque automático de forma imperativa.
+* `components/atoms/action-button.jsx`: Este átomo recibe funciones de disparo para eventos como limpiar o restablecer filtros. Su sentido es proveer un botón genérico y reutilizable en toda la interfaz.
+* `components/molecules/product-card.jsx`: Esta molécula recibe la información individual de un producto del catálogo. Su sentido es agrupar los datos visuales del artículo (precio, stock y categoría) desacoplados de la lógica global.
+* `components/organisms/product-catalog-list.jsx`: Este organismo recibe el listado completo de productos y ejecuta el hook `useMemo` para optimizar el filtrado y cálculo de totales. Su sentido es coordinar la renderización eficiente de la lista sin penalizar el rendimiento.
+* `components/templates/catalog-template.jsx`: Este template recibe el organismo del catálogo y la estructura de distribución. Su sentido es consolidar la vista bajo Atomic Design y Clean Architecture, manteniendo separadas las capas visuales.
 
 
 * **Criterios de Aceptación:**
@@ -3965,12 +3954,12 @@ Una pantalla donde varios componentes comparten información sin que tú se la p
 
 ```
 
-* **Estructura de Archivos (Kebab-case obligatorio):**
-* `hooks/use-inventory-management.js`
-* `components/atoms/status-badge.jsx`
-* `components/atoms/table-cell.jsx`
-* `components/organisms/inventory-table.jsx`
-* `components/templates/inventory-template.jsx`
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `hooks/use-inventory-management.js`: Este Custom Hook recibe los datos crudos del inventario. Su sentido es centralizar toda la lógica de negocio (filtrado, ordenamiento con `Array.prototype.sort()` y cálculo de métricas), devolviendo funciones estables gracias a `useCallback` para mantener limpios a los componentes visuales.
+* `components/atoms/status-badge.jsx`: Este átomo recibe el nivel numérico de stock de un ítem. Su sentido es encapsular la representación visual de la alerta (ej. stock crítico o normal) mediante estilos limpios y reutilizables.
+* `components/atoms/table-cell.jsx`: Este átomo recibe un valor primitivo de texto o número. Su sentido es actuar como la celda base estilizada para estructurar filas de tablas de manera uniforme.
+* `components/organisms/inventory-table.jsx`: Este organismo recibe las funciones y estados proporcionados por el Custom Hook de inventario. Su sentido es coordinar la renderización de la tabla aplicando métodos nativos de transformación de datos.
+* `components/templates/inventory-template.jsx`: Este template recibe el organismo de la tabla y los controles generales. Su sentido es unificar la vista de gestión bajo Atomic Design y Clean Architecture, asegurando la separación de responsabilidades.
 
 
 * **Criterios de Aceptación:**
@@ -4005,16 +3994,16 @@ Una pantalla donde varios componentes comparten información sin que tú se la p
 
 ```
 
-* **Estructura de Archivos (Kebab-case obligatorio):**
-* `context/dashboard-theme-context.jsx`
-* `components/atoms/theme-toggle-button.jsx`
-* `components/molecules/metric-card.jsx`
-* `components/organisms/financial-analytics-grid.jsx`
-* `components/templates/dashboard-template.jsx`
+* **Estructura de Archivos (Kebab-case obligatorio y Flujo de Arquitectura):**
+* `context/dashboard-theme-context.jsx`: Este contexto global recibe la configuración de tema y los filtros activos corporativos. Su sentido es aplicar Inversión de Dependencias (DIP), proveyendo un canal de comunicación centralizado para evitar el paso manual de propiedades (*prop drilling*) a través de los componentes de la aplicación.
+* `components/atoms/theme-toggle-button.jsx`: Este átomo recibe la función de alternancia obtenida directamente del contexto global. Su sentido es permitir al usuario cambiar el aspecto visual de la aplicación de manera desacoplada.
+* `components/molecules/metric-card.jsx`: Esta molécula recibe los valores calculados de una métrica financiera. Su sentido es estructurar visualmente la información de ingresos o egresos sin acoplarse al motor de datos principal.
+* `components/organisms/financial-analytics-grid.jsx`: Este organismo recibe el listado masivo de transacciones y los valores diferidos (`useDeferredValue`). Su sentido es procesar agrupaciones complejas mediante `Object.groupBy()` o estructuras `Map`, manteniendo la concurrencia fluida mediante `useTransition`.
+* `components/templates/dashboard-template.jsx`: Este template recibe el organismo analítico y el proveedor de contexto global. Su sentido es consolidar la vista bajo Clean Architecture y Atomic Design, asegurando una separación total entre la lógica de estado global y la presentación visual.
 
 
 * **Criterios de Aceptación:**
-1. Se debe crear un proveedor de contexto global (`dashboard-theme-context`) que gestione el estado del tema visual y filtros activos, consumido mediante `useContext` en al menos dos componentes independientes sin recurrir a *prop drilling*.
+1. Se debe crear un proveedor de contexto global (`dashboard-theme-context`) que gestione el estado del tema visual y filtros activos, consumido mediante `useContext` en al menos dois componentes independientes sin recurrir a *prop drilling*.
 2. La consolidación de métricas financieras por departamento debe realizarse utilizando lógica avanzada de agrupación de JavaScript (`Object.groupBy()` o estructuras `Map`).
 3. Se debe implementar `useTransition` para marcar las actualizaciones masivas de filtros analíticos como transacciones de UI no urgentes, manteniendo la fluidez interactiva del usuario.
 4. Se debe integrar `useDeferredValue` para desvincular la respuesta del input de búsqueda instantánea de la renderización del listado pesado de transacciones financieras.
