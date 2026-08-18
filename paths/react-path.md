@@ -3883,6 +3883,16 @@ onClick
 * 📄 **[MDN Web Docs: JavaScript Closures & Scope](https://developer.mozilla.org/es/docs/Web/JavaScript/Closures)** — *Entendiendo el comportamiento interno de los closures detrás de `useCallback` y Custom Hooks.*
 * 📄 **[React Sharing State Between Components](https://es.react.dev/learn/sharing-state-between-components)** — *Guía oficial sobre cómo elegir entre props, state local y Context API.*
 * 📄 **[React Passing Data Deeply with Context](https://es.react.dev/learn/passing-data-deeply-with-context)** — *Documentación conceptual paso a paso sobre el funcionamiento de Context.*
+* 📄 **[React Optimizing Performance with useMemo](https://www.google.com/search?q=https://es.react.dev/learn/you-might-not-need-an-effect%23caching-expensive-calculations)** — *Guía sobre cuándo es verdaderamente necesario usar memorización de cálculos y cuándo evitarlo.*
+* 📄 **[React memo API Reference](https://es.react.dev/reference/react/memo)** — *Documentación de `React.memo` para evitar re-renders en componentes hijos junto a `useCallback`.*
+* 📄 **[React Scaling Up with Reducer and Context](https://es.react.dev/learn/scaling-up-with-reducer-and-context)** — *Patrón avanzado combinando `useReducer` y `useContext` para gestionar estados globales complejos.*
+* 📄 **[React createContext API Reference](https://es.react.dev/reference/react/createContext)** — *Referencia de la API para definir, configurar y establecer valores predeterminados en contextos.*
+* 📄 **[React Skipping Re-renders with useCallback](https://www.google.com/search?q=https://es.react.dev/reference/react/useCallback%23skipping-re-rendering-of-components)** — *Explicación detallada de cómo optimizar el paso de funciones a componentes memorizados.*
+* 📄 **[React Preserving and Resetting State](https://es.react.dev/learn/preserving-and-resetting-state)** — *Comprensión de cómo el árbol de componentes afecta la retención de estado en React.*
+* 📄 **[React Rules of Hooks](https://es.react.dev/reference/rules/rules-of-hooks)** — *Reglas obligatorias para la invocación de `useMemo`, `useCallback` y `useContext` en el nivel superior.*
+* 📄 **[TypeScript React CheatSheet (Context & Hooks)](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/context/)** — *Guía comunitaria de tipado estricto para `createContext`, `useContext` y hooks en TypeScript.*
+* 📄 **[Kent C. Dodds: How to use React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)** — *Patrón arquitectónico para estructurar contextos y custom hooks exponenciales con validación de runtime.*
+* 📄 **[Kent C. Dodds: When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback)** — *Análisis profundo del costo de abstracción frente a los beneficios reales de rendimiento.*
 
 ---
 
@@ -4380,10 +4390,4 @@ Una aplicación optimizada bajo arquitecturas escalables, implementando carga pe
 3. Se debe integrar concurrencia de React (`useTransition` y `useDeferredValue`) para gestionar filtros y búsquedas masivas de proyectos sin bloquear la interfaz gráfica.
 4. La consolidación y agrupación de presupuestos por prioridad y estado de proyecto debe realizarse mediante funciones de agregación avanzadas de JavaScript (`Object.groupBy()` o estructuras `Map`).
 5. **Principio SOLID (DIP - Inversión de Dependencias):** Los componentes de presentación (`project-card`, `enterprise-dashboard-grid`) no deben acoplarse directamente a fuentes de datos brutas, recibiendo abstracciones desacopladas a través de contratos de contexto e interfaces claras.
-
-------------------------------------------------------------------------
-
-## 📝 Notas generales
-
--   [ ] Espacio libre para anotaciones personales, dudas o temas que
-    quieras reforzar.
+   
