@@ -1,7 +1,7 @@
 //import { useEffect, useState } from "react";
 
-import Day1Exercise1 from "../components/molecules/Day1-exercise-1/day1-exercise-1";
-import Day1Exercise2 from "../components/molecules/Day1-exercise-1/day1-exercise-2";
+import Day1Exercise1 from "../components/molecules/Day1/day1-exercise-1";
+import Day1Exercise2 from "../components/molecules/Day1/day1-exercise-2";
 
 
 export default function Day1() {
