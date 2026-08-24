@@ -1,0 +1,14 @@
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.form-input-label {
+  font-weight: bold;
+}
+
+.form-input-field {
+  padding: 8px;
+  border: 1px solid #ccc;
+}

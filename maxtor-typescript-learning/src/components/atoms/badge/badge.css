@@ -1,0 +1,12 @@
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.badge-offer {
+  background-color: #ff4d4f;
+  color: #ffffff;
+}
