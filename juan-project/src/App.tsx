@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Day1 from './pages/day1'
 import Day5 from './pages/day5'
 import { NombreProvider } from './context/NombreContext'
+import Day6 from './pages/day6'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Day1 />} />
           <Route path="/day5" element={<NombreProvider><Day5 /></NombreProvider>} />
+          <Route path="/day6" element={<Day6 />} />
         </Routes>
       </BrowserRouter>
     </div>
