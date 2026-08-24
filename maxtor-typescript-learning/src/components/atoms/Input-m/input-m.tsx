@@ -1,18 +1,31 @@
+import { useId } from 'react';
+
 import './input-m.css'
 
+
 interface Input {
-  passwordHintId: string;
-  value : string
+  label: string;
+  ref?: React.RefObject<HTMLInputElement | null> ;
+  name: string;
+  type: string;
+  value : string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 }
 
-export default function Input({passwordHintId,onChange,value}: Input) {
+export default function Input({label,name,type,onChange,value,ref}: Input) {
+  const inputId = useId();
   return (
-    <div className="Input m-5">
-    <input
-          aria-describedby={passwordHintId}
-          value={value}
+    <div className="form-input-group">
+      <label htmlFor={inputId} className="form-input-label">
+        {label}
+      </label>
+      <input
+      ref = {ref}
+        id={inputId}
+        name={name}
+        type={type}
+        value={value}
            onChange={onChange}
         ></input>
     </div>

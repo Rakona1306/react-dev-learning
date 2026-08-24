@@ -1,7 +1,7 @@
 import Separator from "../components/atoms/separator/separator";
-import Day2Exercise1 from "../components/molecules/Day2/day2-exercise-1";
-import TodoList from "../components/molecules/Day2/todo-list(ex2)";
-import ProductList from "../components/organisms/product-list/product-list";
+import Day2Exercise1 from "../components/molecules/day2/day2-exercise-1";
+import TodoList from "../components/molecules/day2/todo-list(ex2)";
+import ProductList from "../components/organisms/day2/product-list/product-list";
 
 export default function Day2() {
   return (

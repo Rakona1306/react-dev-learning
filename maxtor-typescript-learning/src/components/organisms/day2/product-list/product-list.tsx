@@ -1,4 +1,4 @@
-import ProductCard from "../../molecules/Day2/product-card(ex3)";
+import ProductCard from "../../../molecules/day2/product-card(ex3)";
 
 interface ProductListProps {
     productos: {
